@@ -140,6 +140,69 @@
       border-color: var(--accent);
     }
 
+    /* ===== TOOL LOGOS ===== */
+    .card-logos {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .card-logo {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s, background 0.25s;
+      position: relative;
+    }
+
+    .card-logo:hover {
+      transform: translateY(-3px) scale(1.1);
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.75);
+    }
+
+    /* Tooltip */
+    .card-logo::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: #111;
+      color: #e8e4dc;
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding: 4px 8px;
+      border: 1px solid #2a2a2a;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .card-logo:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .card-logo svg,
+    .card-logo img {
+      width: 24px; height: 24px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* Push card-info text a bit left so logos don't overlap */
+    .card-info { padding-right: 100px; }
+    .project-row.full .card-info { padding-right: 160px; }
+
     @media (max-width: 900px) {
       .project-row { grid-template-columns: 1fr; }
       .project-row.full .media-wrap { aspect-ratio: 16/9; }
@@ -161,7 +224,6 @@
     <li><a href="art.html">Art</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
 
@@ -191,6 +253,18 @@
         <h2 class="card-title">Kintsugi</h2>
         <p class="card-meta">Unity · Spine · Photoshop</p>
       </div>
+      <!-- Logos -->
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
+        <div class="card-logo" data-tip="Spine">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3" fill="#e8c06a"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="#e8c06a" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="card-logo" data-tip="Photoshop">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#001e36"/><text x="3.5" y="17" font-family="Arial" font-weight="900" font-size="11" fill="#31a8ff">Ps</text></svg>
+        </div>
+      </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -211,6 +285,14 @@
         <h2 class="card-title">Kourou Space Coop</h2>
         <p class="card-meta">Ariane, vous me recevez ?</p>
       </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Blender">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.51 13.214c.046-.8.438-1.538 1.075-2.026a3.19 3.19 0 013.463-.316 3.17 3.17 0 011.767 2.86 3.177 3.177 0 01-1.944 2.932 3.19 3.19 0 01-3.46-.647 3.168 3.168 0 01-.9-2.803m-1.512.558a4.685 4.685 0 001.333 3.367 4.705 4.705 0 005.11.956 4.683 4.683 0 002.87-4.323 4.682 4.682 0 00-2.605-4.2 4.703 4.703 0 00-5.104.467 4.682 4.682 0 00-1.604 3.733M9.545 8.03l-5.556 4.05-.598-8.525 5.688 2.902.466 1.573zm-7.45 4.558c-.056.04-.013.03 0 0zm.463-.34L8.23 8.394l1.135 3.84-6.807.014zm14.502-5.043H9.908l-1.46-5.37L21.769 7.2l-4.71.005zM8.357 2.045l1.395 5.127H7.807l-5.88-3C3.616 2.83 5.925 2.153 8.357 2.045zm6.028 22.002c-6.762.135-12.373-5.24-12.508-11.998l1.516-.004C3.517 17.9 8.5 22.627 14.438 22.51c5.936-.116 10.737-5.012 10.622-10.944-.116-5.934-5.012-10.738-10.948-10.622a10.732 10.732 0 00-3.744.87L9.74 0C15.69-1.574 22.575 2.28 24.15 8.222c1.575 5.945-2.28 12.83-8.222 14.405a12.49 12.49 0 01-1.543.42z" fill="#f4792b"/></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
+      </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -227,6 +309,17 @@
         <p class="card-tag">Bachelor Project · Animator & 3D Modeler · 2 Months</p>
         <h2 class="card-title">Masocat</h2>
         <p class="card-meta">Blender · 3DSMax · Unity</p>
+      </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Blender">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.51 13.214c.046-.8.438-1.538 1.075-2.026a3.19 3.19 0 013.463-.316 3.17 3.17 0 011.767 2.86 3.177 3.177 0 01-1.944 2.932 3.19 3.19 0 01-3.46-.647 3.168 3.168 0 01-.9-2.803m-1.512.558a4.685 4.685 0 001.333 3.367 4.705 4.705 0 005.11.956 4.683 4.683 0 002.87-4.323 4.682 4.682 0 00-2.605-4.2 4.703 4.703 0 00-5.104.467 4.682 4.682 0 00-1.604 3.733M9.545 8.03l-5.556 4.05-.598-8.525 5.688 2.902.466 1.573zm-7.45 4.558c-.056.04-.013.03 0 0zm.463-.34L8.23 8.394l1.135 3.84-6.807.014zm14.502-5.043H9.908l-1.46-5.37L21.769 7.2l-4.71.005zM8.357 2.045l1.395 5.127H7.807l-5.88-3C3.616 2.83 5.925 2.153 8.357 2.045zm6.028 22.002c-6.762.135-12.373-5.24-12.508-11.998l1.516-.004C3.517 17.9 8.5 22.627 14.438 22.51c5.936-.116 10.737-5.012 10.622-10.944-.116-5.934-5.012-10.738-10.948-10.622a10.732 10.732 0 00-3.744.87L9.74 0C15.69-1.574 22.575 2.28 24.15 8.222c1.575 5.945-2.28 12.83-8.222 14.405a12.49 12.49 0 01-1.543.42z" fill="#f4792b"/></svg>
+        </div>
+        <div class="card-logo" data-tip="3DS Max">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#1a1a2e"/><text x="2.5" y="17" font-family="Arial" font-weight="900" font-size="9.5" fill="#00aaff">3ds</text></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
       </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -247,6 +340,14 @@
         <p class="card-tag">Mobile Game · TileSet & VFX Artist · 1 Month</p>
         <h2 class="card-title">Love Knight</h2>
       </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Photoshop">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#001e36"/><text x="3.5" y="17" font-family="Arial" font-weight="900" font-size="11" fill="#31a8ff">Ps</text></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
+      </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -263,6 +364,14 @@
         <p class="card-tag">ALT+CTRL Project · 3D Generalist · 2 Weeks</p>
         <h2 class="card-title">Super Kaiju Simulator</h2>
         <p class="card-meta">Extra Power Smash 2</p>
+      </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Blender">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.51 13.214c.046-.8.438-1.538 1.075-2.026a3.19 3.19 0 013.463-.316 3.17 3.17 0 011.767 2.86 3.177 3.177 0 01-1.944 2.932 3.19 3.19 0 01-3.46-.647 3.168 3.168 0 01-.9-2.803m-1.512.558a4.685 4.685 0 001.333 3.367 4.705 4.705 0 005.11.956 4.683 4.683 0 002.87-4.323 4.682 4.682 0 00-2.605-4.2 4.703 4.703 0 00-5.104.467 4.682 4.682 0 00-1.604 3.733M9.545 8.03l-5.556 4.05-.598-8.525 5.688 2.902.466 1.573zm-7.45 4.558c-.056.04-.013.03 0 0zm.463-.34L8.23 8.394l1.135 3.84-6.807.014zm14.502-5.043H9.908l-1.46-5.37L21.769 7.2l-4.71.005zM8.357 2.045l1.395 5.127H7.807l-5.88-3C3.616 2.83 5.925 2.153 8.357 2.045zm6.028 22.002c-6.762.135-12.373-5.24-12.508-11.998l1.516-.004C3.517 17.9 8.5 22.627 14.438 22.51c5.936-.116 10.737-5.012 10.622-10.944-.116-5.934-5.012-10.738-10.948-10.622a10.732 10.732 0 00-3.744.87L9.74 0C15.69-1.574 22.575 2.28 24.15 8.222c1.575 5.945-2.28 12.83-8.222 14.405a12.49 12.49 0 01-1.543.42z" fill="#f4792b"/></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
       </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -283,6 +392,17 @@
         <p class="card-tag">First Project · 3D Modeler & Animator · 1 Month</p>
         <h2 class="card-title">The Last Night to Hunt</h2>
       </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Blender">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.51 13.214c.046-.8.438-1.538 1.075-2.026a3.19 3.19 0 013.463-.316 3.17 3.17 0 011.767 2.86 3.177 3.177 0 01-1.944 2.932 3.19 3.19 0 01-3.46-.647 3.168 3.168 0 01-.9-2.803m-1.512.558a4.685 4.685 0 001.333 3.367 4.705 4.705 0 005.11.956 4.683 4.683 0 002.87-4.323 4.682 4.682 0 00-2.605-4.2 4.703 4.703 0 00-5.104.467 4.682 4.682 0 00-1.604 3.733M9.545 8.03l-5.556 4.05-.598-8.525 5.688 2.902.466 1.573zm-7.45 4.558c-.056.04-.013.03 0 0zm.463-.34L8.23 8.394l1.135 3.84-6.807.014zm14.502-5.043H9.908l-1.46-5.37L21.769 7.2l-4.71.005zM8.357 2.045l1.395 5.127H7.807l-5.88-3C3.616 2.83 5.925 2.153 8.357 2.045zm6.028 22.002c-6.762.135-12.373-5.24-12.508-11.998l1.516-.004C3.517 17.9 8.5 22.627 14.438 22.51c5.936-.116 10.737-5.012 10.622-10.944-.116-5.934-5.012-10.738-10.948-10.622a10.732 10.732 0 00-3.744.87L9.74 0C15.69-1.574 22.575 2.28 24.15 8.222c1.575 5.945-2.28 12.83-8.222 14.405a12.49 12.49 0 01-1.543.42z" fill="#f4792b"/></svg>
+        </div>
+        <div class="card-logo" data-tip="3DS Max">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#1a1a2e"/><text x="2.5" y="17" font-family="Arial" font-weight="900" font-size="9.5" fill="#00aaff">3ds</text></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
+      </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
           <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -298,6 +418,14 @@
       <div class="card-info">
         <p class="card-tag">Story Game · 2 Weeks</p>
         <h2 class="card-title">Epistolaris Revolution</h2>
+      </div>
+      <div class="card-logos">
+        <div class="card-logo" data-tip="Photoshop">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#001e36"/><text x="3.5" y="17" font-family="Arial" font-weight="900" font-size="11" fill="#31a8ff">Ps</text></svg>
+        </div>
+        <div class="card-logo" data-tip="Unity">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 2.8L19.3 7c.5.3.8.8.8 1.4v7.2c0 .6-.3 1.1-.8 1.4l-6.4 4.2c-.5.3-1.1.3-1.6 0L4.9 17c-.5-.3-.8-.8-.8-1.4V8.4c0-.6.3-1.1.8-1.4L11.3 2.8c.5-.3 1.1-.3 1.6 0zM12 4.8L6.6 8.2 9 9.6l3-1.7 3 1.7 2.4-1.4L12 4.8zm-5.4 4.8v6.8l2.4-1.4v-2.7l3 1.7V17l2.4 1.4V9.6L12 11.3 9 9.6l-2.4-1z"/></svg>
+        </div>
       </div>
       <div class="card-arrow">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
