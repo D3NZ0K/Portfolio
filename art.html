@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enzo de Corte — Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    .page-hero {
+      padding: calc(var(--nav-h) + 80px) 40px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-hero .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      max-width: 480px;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== CATEGORIES GRID ===== */
+    /*
+      Layout : 1 grande carte à gauche (span 2 lignes) + 4 cartes à droite
+      Adapté à 5 catégories : 3D · Texturing · VFX · Traditional drawing · Graphics tablet
+    */
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+      padding: 2px 40px 0;
+    }
+
+    /* Première carte : grande, span 2 lignes */
+    .art-card:first-child {
+      grid-row: span 2;
+    }
+
+    .art-card:first-child .media-wrap {
+      aspect-ratio: unset;
+      height: 100%;
+      min-height: 400px;
+    }
+
+    /* Sous-grille droite : 2 colonnes × 2 lignes */
+    .art-grid-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+    }
+
+    /* ===== CARD ===== */
+    .art-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.4s var(--ease-out);
+      will-change: transform;
+    }
+
+    .art-card .media-wrap {
+      aspect-ratio: 4/3;
+    }
+
+    .art-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6) saturate(0.7);
+      transition: transform 0.6s var(--ease-out), filter 0.4s;
+    }
+
+    .art-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.4) saturate(0.5);
+    }
+
+    /* Overlay info */
+    .art-card-info {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+    }
+
+    .art-card-num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .art-card-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .art-card:first-child .art-card-title {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+
+    .art-card-arrow {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+    }
+
+    .art-card:hover .art-card-arrow {
+      opacity: 1;
+      transform: scale(1);
+      border-color: var(--accent);
+    }
+
+    /* Small cards inside the sub-grid have smaller title */
+    .art-grid-right .art-card-title {
+      font-size: 1.2rem;
+    }
+
+    /* ===== FIFTH CARD — full width bottom strip ===== */
+    .art-card-wide {
+      grid-column: 1 / -1;
+    }
+
+    .art-card-wide .media-wrap {
+      aspect-ratio: 21/6;
+    }
+
+    .art-card-wide .art-card-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    @media (max-width: 900px) {
+      .art-grid {
+        grid-template-columns: 1fr;
+        padding: 2px 20px 0;
+      }
+      .art-card:first-child { grid-row: auto; }
+      .art-card:first-child .media-wrap { aspect-ratio: 4/3; min-height: unset; height: auto; }
+      .art-grid-right { grid-template-columns: 1fr; }
+      .art-card-wide .media-wrap { aspect-ratio: 16/7; }
+      .page-hero { padding: calc(var(--nav-h) + 40px) 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
+  <button class="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="games.html">Games</a></li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero reveal">
+  <p class="eyebrow">Creative work</p>
+  <h1>Art</h1>
+  <p>Personal explorations across 3D, texturing, VFX, and illustration — both digital and traditional.</p>
+</header>
+
+<main style="margin-top: 2px;">
+
+  <div class="art-grid">
+
+    <!-- LEFT — Grande carte : 3D -->
+    <a href="#" class="art-card reveal">
+      <div class="media-wrap">
+        <img data-src="https://placehold.co/800x900/141414/333?text=3D" alt="3D" />
+      </div>
+      <div class="art-card-info">
+        <span class="art-card-num">01</span>
+        <h2 class="art-card-title">3D</h2>
+      </div>
+      <div class="art-card-arrow">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- RIGHT — Sous-grille 2×2 -->
+    <div class="art-grid-right">
+
+      <!-- Texturing -->
+      <a href="#" class="art-card reveal" style="transition-delay:0.05s">
+        <div class="media-wrap">
+          <img data-src="https://placehold.co/500x375/141414/333?text=Texturing" alt="Texturing" />
+        </div>
+        <div class="art-card-info">
+          <span class="art-card-num">02</span>
+          <h2 class="art-card-title">Texturing</h2>
+        </div>
+        <div class="art-card-arrow">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- VFX -->
+      <a href="#" class="art-card reveal" style="transition-delay:0.1s">
+        <div class="media-wrap">
+          <!--
+            💡 GIF → vidéo pour la perf :
+            <video data-src="vfx-preview.mp4" autoplay loop muted playsinline></video>
+          -->
+          <img data-src="https://placehold.co/500x375/141414/333?text=VFX" alt="VFX" />
+        </div>
+        <div class="art-card-info">
+          <span class="art-card-num">03</span>
+          <h2 class="art-card-title">VFX</h2>
+        </div>
+        <div class="art-card-arrow">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Traditional drawing -->
+      <a href="#" class="art-card reveal" style="transition-delay:0.15s">
+        <div class="media-wrap">
+          <img data-src="https://placehold.co/500x375/141414/333?text=Traditional+Drawing" alt="Traditional drawing" />
+        </div>
+        <div class="art-card-info">
+          <span class="art-card-num">04</span>
+          <h2 class="art-card-title">Traditional drawing</h2>
+        </div>
+        <div class="art-card-arrow">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Graphics tablet -->
+      <a href="#" class="art-card reveal" style="transition-delay:0.2s">
+        <div class="media-wrap">
+          <img data-src="https://placehold.co/500x375/141414/333?text=Graphics+Tablet" alt="Drawing with a graphics tablet" />
+        </div>
+        <div class="art-card-info">
+          <span class="art-card-num">05</span>
+          <h2 class="art-card-title">Graphics tablet</h2>
+        </div>
+        <div class="art-card-arrow">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </a>
+
+    </div><!-- /art-grid-right -->
+
+  </div><!-- /art-grid -->
+
+</main>
+
+<footer>
+  <p>© 2025 Enzo de Corte</p>
+  <div class="footer-links">
+    <a href="games.html">Games</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<button class="back-top" aria-label="Back to top">↑</button>
+<script src="main.js"></script>
+</body>
+</html>
