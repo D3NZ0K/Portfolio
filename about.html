@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enzo de Corte — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-wrap {
+      min-height: 100vh;
+      padding: calc(var(--nav-h) + 80px) 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* LEFT — Photo */
+    .about-visual {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+    }
+
+    .about-photo {
+      aspect-ratio: 4/5;
+    }
+
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%);
+    }
+
+    .about-caption {
+      margin-top: 16px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* RIGHT — Text */
+    .about-content {}
+
+    .about-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: 40px;
+    }
+
+    .about-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .about-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-body p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Skills */
+    .skills-block {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    .skills-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-name span { color: var(--muted); font-weight: 400; }
+
+    .skill-bar {
+      height: 2px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      background: var(--accent);
+      width: 0;
+      transition: width 1.2s var(--ease-out);
+    }
+
+    .skill-item.visible .skill-fill { width: var(--w); }
+
+    /* CTA */
+    .about-cta {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #0e0e0e;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #d4b87a; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .about-wrap {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: calc(var(--nav-h) + 40px) 20px 60px;
+      }
+      .about-visual { position: static; }
+      .about-photo { aspect-ratio: 3/2; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
+  <button class="nav-burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="games.html">Games</a></li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="about-wrap">
+
+  <!-- LEFT -->
+  <div class="about-visual reveal">
+    <div class="about-photo media-wrap">
+      <img data-src="https://placehold.co/600x750/181818/444?text=Photo" alt="Enzo de Corte" />
+    </div>
+    <div class="about-caption">
+      <span>Enzo de Corte</span>
+      <span>Paris, La Défense</span>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="about-content">
+
+    <p class="about-eyebrow reveal">About me</p>
+    <h1 class="about-title reveal">Game Artist<br>& <em>Storyteller</em></h1>
+
+    <div class="about-body">
+      <p class="reveal">
+        Hi! My name is Enzo. I am a <strong>22-year-old Game Art student at IIM</strong> in Paris La Défense, and what I like is creating universes, atypical characters, and a strong atmosphere in games.
+      </p>
+      <p class="reveal">
+        In my youth I drew my favorite comic book characters or hundreds of Pokémon, and spent evenings playing cooperative games with my uncle. The association of these two passions led me naturally to study Game Art — <strong>a job where I want to immerse players in the heart of my imagination.</strong>
+      </p>
+      <p class="reveal">
+        Being a big volleyball fan, I love teamwork. I'm also very curious, and admittedly, a big talker.
+      </p>
+      <p class="reveal" style="color: var(--accent); font-size: 0.85rem; letter-spacing: 0.06em;">
+        → Currently looking for an internship.
+      </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="skills-block reveal">
+      <p class="skills-label">Skills & Tools</p>
+      <div class="skills-grid">
+        <div class="skill-item" style="--w: 90%">
+          <div class="skill-name">Spine 2D <span>Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" style="--w: 85%">
+          <div class="skill-name">Unity <span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" style="--w: 80%">
+          <div class="skill-name">Photoshop <span>Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" style="--w: 75%">
+          <div class="skill-name">Blender <span>Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" style="--w: 70%">
+          <div class="skill-name">3DS Max <span>Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-item" style="--w: 65%">
+          <div class="skill-name">VFX / Shaders <span>Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta reveal">
+      <a href="contact.html" class="btn-primary">Get in touch</a>
+      <a href="#" class="btn-outline">Download CV ↓</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Enzo de Corte</p>
+  <div class="footer-links">
+    <a href="games.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<button class="back-top" aria-label="Back to top">↑</button>
+<script src="main.js"></script>
+<script>
+  // Skill bars : trigger when visible
+  const skillItems = document.querySelectorAll('.skill-item');
+  const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        skillObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  skillItems.forEach(s => skillObs.observe(s));
+</script>
+</body>
+</html>
