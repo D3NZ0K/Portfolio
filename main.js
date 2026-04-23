@@ -76,4 +76,13 @@ document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
   });
+// GIF on hover
+document.querySelectorAll('.hover-gif').forEach(img => {
+  const gif = img.dataset.src;
+  const still = img.dataset.static;
+  img.src = still;
+  img.removeAttribute('data-src');
+  img.classList.add('loaded');
+  img.addEventListener('mouseenter', () => img.src = gif);
+  img.addEventListener('mouseleave', () => img.src = still);
 });
