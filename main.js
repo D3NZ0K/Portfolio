@@ -76,6 +76,7 @@ document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
   });
+});
 // GIF on hover
 document.querySelectorAll('.hover-gif').forEach(img => {
   const gif = img.dataset.src;
