@@ -65,16 +65,18 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => revealObs.observe(el));
 
-// ===== PROJECT CARD HOVER (tilt léger) =====
+// GIF/image on hover for project cards
 document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `perspective(600px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg) translateY(-4px)`;
+  const gif = card.querySelector('.card-video');
+  const still = card.querySelector('.card-still');
+  if (!gif) return;
+  card.addEventListener('mouseenter', () => {
+    gif.style.opacity = '1';
+    still.style.opacity = '0';
   });
   card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
+    gif.style.opacity = '0';
+    still.style.opacity = '1';
   });
 });
 // GIF on hover
