@@ -87,3 +87,11 @@ document.querySelectorAll('.hover-gif').forEach(img => {
   img.addEventListener('mouseenter', () => img.src = gif);
   img.addEventListener('mouseleave', () => img.src = still);
 });
+// Force hero video autoplay
+const heroVideo = document.getElementById('hero-video');
+if (heroVideo) {
+  heroVideo.play().catch(() => {
+    heroVideo.muted = true;
+    heroVideo.play();
+  });
+}
