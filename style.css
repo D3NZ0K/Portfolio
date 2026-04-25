@@ -165,6 +165,8 @@ footer p {
 
 .media-wrap img.loaded,
 .media-wrap video.loaded { opacity: 1; }
+.card-still { opacity: 1 !important; }
+.card-video { opacity: 0 !important; }
 
 .media-wrap::before {
   content: '';
