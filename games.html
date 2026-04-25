@@ -8,246 +8,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .card-gif {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.4s;
-     }
-
-     .project-card:hover .card-gif {
-       opacity: 1;
-     }
-    .card-still { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover;
-      opacity: 1;
-      transition: opacity 0.4s;
-    }
-
-      .project-card:hover .card-still {
-       opacity: 0;
-    }
-    .card-still { 
-      opacity: 1 !important; 
-      position: relative;
-      z-index: 2;
-    }
-    .card-video { 
-      opacity: 0; 
-      position: absolute; 
-      inset: 0; 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover;
-      z-index: 1;
-      transition: opacity 0.4s;
-     }
-    .page-hero {
-      padding: calc(var(--nav-h) + 80px) 40px 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .page-hero .eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .page-hero p {
-      color: var(--muted);
-      max-width: 500px;
-      margin-top: 20px;
-      font-size: 0.95rem;
-    }
-
-    /* ===== PROJECTS LIST ===== */
-    .projects-list {
-      padding: 0 40px;
-    }
-
-    .project-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 2px;
-    }
-
-    /* First card spans full width */
-    .project-row.full {
-      grid-template-columns: 1fr;
-    }
-
-    .project-row.full .project-card .media-wrap {
-      aspect-ratio: 16/7;
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      display: block;
-      transition: transform 0.4s var(--ease-out);
-      will-change: transform;
-    }
-
-    .project-card .media-wrap {
-      aspect-ratio: 4/3;
-    }
-
-    .project-card img:not(.card-still):not(.card-gif) {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease-out), filter 0.4s;
-      filter: brightness(0.65) saturate(0.75);
-    }
-
-   .project-card:hover img:not(.card-still):not(.card-gif) {
-      transform: scale(1.05);
-      filter: brightness(0.45) saturate(0.5);
-    }
-
-    .card-info {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 32px 28px 28px;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
-    }
-
-    .card-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    .project-row.full .card-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    }
-
-    .card-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    /* Line separator between index number */
-    .card-num {
-      position: absolute;
-      top: 20px; left: 24px;
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.08em;
-    }
-
-    .card-arrow {
-      position: absolute;
-      top: 20px; right: 24px;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0;
-      transform: scale(0.85);
-      transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
-    }
-
-    .project-card:hover .card-arrow {
-      opacity: 1;
-      transform: scale(1);
-      border-color: var(--accent);
-    }
-
-    /* ===== TOOL LOGOS ===== */
-    .card-logos {
-      position: absolute;
-      bottom: 20px; right: 20px;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      z-index: 2;
-    }
-
-    .card-logo {
-      width: 40px; height: 40px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.08);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      transition: transform 0.25s var(--ease-out), border-color 0.25s, background 0.25s;
-      position: relative;
-    }
-
-    .card-logo:hover {
-      transform: translateY(-3px) scale(1.1);
-      border-color: rgba(255,255,255,0.25);
-      background: rgba(0,0,0,0.75);
-    }
-
-    /* Tooltip */
-    .card-logo::after {
-      content: attr(data-tip);
-      position: absolute;
-      bottom: calc(100% + 7px);
-      left: 50%;
-      transform: translateX(-50%) translateY(4px);
-      background: #111;
-      color: #e8e4dc;
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      padding: 4px 8px;
-      border: 1px solid #2a2a2a;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .card-logo:hover::after {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .card-logo svg,
-    .card-logo img {
-      width: 24px; height: 24px;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    /* Push card-info text a bit left so logos don't overlap */
-    .card-info { padding-right: 100px; }
-    .project-row.full .card-info { padding-right: 160px; }
-
-    @media (max-width: 900px) {
-      .project-row { grid-template-columns: 1fr; }
-      .project-row.full .media-wrap { aspect-ratio: 16/9; }
-      .projects-list { padding: 0 20px; }
-      .page-hero { padding: calc(var(--nav-h) + 40px) 20px 40px; }
-    }
+    .page-hero { padding: calc(var(--nav-h) + 80px) 40px 64px; border-bottom: 1px solid var(--border); }
+    .page-hero .eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 600; line-height: 1.05; }
+    .page-hero p { color: var(--muted); max-width: 500px; margin-top: 20px; font-size: 0.95rem; }
+    .projects-list { padding: 0 40px; }
+    .project-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+    .project-row.full { grid-template-columns: 1fr; }
+    .project-row.full .project-card .media-wrap { aspect-ratio: 16/7; }
+    .project-card { position: relative; overflow: hidden; cursor: pointer; display: block; }
+    .project-card .media-wrap { aspect-ratio: 4/3; }
+    .card-still { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65) saturate(0.75); transition: opacity 0.4s, filter 0.4s; display: block; }
+    .card-gif { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s; display: block; }
+    .project-card:hover .card-still { opacity: 0; filter: brightness(0.45) saturate(0.5); }
+    .project-card:hover .card-gif { opacity: 1; }
+    .card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 28px 28px; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%); }
+    .card-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .card-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.15; }
+    .project-row.full .card-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    .card-meta { font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
+    .card-num { position: absolute; top: 20px; left: 24px; font-family: var(--font-display); font-size: 0.75rem; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+    .card-arrow { position: absolute; top: 20px; right: 24px; width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.85); transition: opacity 0.3s, transform 0.3s, border-color 0.3s; }
+    .project-card:hover .card-arrow { opacity: 1; transform: scale(1); border-color: var(--accent); }
+    .card-logos { position: absolute; bottom: 20px; right: 20px; display: flex; gap: 6px; align-items: center; z-index: 2; }
+    .card-logo { width: 40px; height: 40px; border-radius: 8px; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 0.25s, border-color 0.25s; position: relative; }
+    .card-logo:hover { transform: translateY(-3px) scale(1.1); border-color: rgba(255,255,255,0.25); }
+    .card-logo::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%) translateY(4px); background: #111; color: #e8e4dc; font-size: 0.6rem; white-space: nowrap; padding: 4px 8px; border: 1px solid #2a2a2a; pointer-events: none; opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+    .card-logo:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .card-logo svg, .card-logo img { width: 24px; height: 24px; display: block; }
+    .card-info { padding-right: 100p
   </style>
 </head>
 <body>
