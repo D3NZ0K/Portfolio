@@ -53,7 +53,7 @@ nav {
   color: var(--text);
 }
 
-.nav-logo span { color: var(--accent); }
+.nav-logo span { color: var(--text); }
 
 .nav-links {
   display: flex;
