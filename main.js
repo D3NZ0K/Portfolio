@@ -69,13 +69,27 @@ reveals.forEach(el => revealObs.observe(el));
 document.querySelectorAll('.project-card').forEach(card => {
   const gif = card.querySelector('.card-video');
   const still = card.querySelector('.card-still');
-  if (!gif) return;
+  if (!gif || !still) return;
+  
+  // État initial
+  still.style.opacity = '1';
+  still.style.zIndex = '2';
+  gif.style.opacity = '0';
+  gif.style.zIndex = '1';
+  gif.style.position = 'absolute';
+  gif.style.inset = '0';
+  gif.style.width = '100%';
+  gif.style.height = '100%';
+  gif.style.objectFit = 'cover';
+  
   card.addEventListener('mouseenter', () => {
     gif.style.opacity = '1';
+    gif.style.zIndex = '3';
     still.style.opacity = '0';
   });
   card.addEventListener('mouseleave', () => {
     gif.style.opacity = '0';
+    gif.style.zIndex = '1';
     still.style.opacity = '1';
   });
 });
