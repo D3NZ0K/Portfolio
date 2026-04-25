@@ -36,7 +36,14 @@
     .card-logo::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%) translateY(4px); background: #111; color: #e8e4dc; font-size: 0.6rem; white-space: nowrap; padding: 4px 8px; border: 1px solid #2a2a2a; pointer-events: none; opacity: 0; transition: opacity 0.2s, transform 0.2s; }
     .card-logo:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
     .card-logo svg, .card-logo img { width: 24px; height: 24px; display: block; }
-    .card-info { padding-right: 100p
+    .card-info { padding-right: 100px; }
+    .project-row.full .card-info { padding-right: 160px; }
+    @media (max-width: 900px) {
+      .project-row { grid-template-columns: 1fr; }
+      .project-row.full .media-wrap { aspect-ratio: 16/9; }
+      .projects-list { padding: 0 20px; }
+      .page-hero { padding: calc(var(--nav-h) + 40px) 20px 40px; }
+    }
   </style>
 </head>
 <body>
