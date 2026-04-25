@@ -265,6 +265,56 @@
       .projects-grid { grid-template-columns: 1fr; padding: 0 20px; }
       .section-header { padding: 60px 20px 32px; flex-direction: column; gap: 16px; }
     }
+    .card-logos {
+    position: absolute;
+    bottom: 20px; right: 20px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    z-index: 2;
+    }
+
+    .card-logo {
+     width: 40px; height: 40px;
+     border-radius: 8px;
+     background: rgba(0,0,0,0.55);
+     backdrop-filter: blur(6px);
+     border: 1px solid rgba(255,255,255,0.08);
+     display: flex; align-items: center; justify-content: center;
+     overflow: hidden;
+     transition: transform 0.25s var(--ease-out), border-color 0.25s;
+     position: relative;
+     }
+
+    .card-logo svg {
+    width: 24px; height: 24px;
+    display: block;
+    }
+
+    .card-logo::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 7px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: #111;
+    color: #e8e4dc;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border: 1px solid #2a2a2a;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .card-logo:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    }
+
+    .card-info { padding-right: 100px; }     
   </style>
 </head>
 <body>
