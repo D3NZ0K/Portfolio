@@ -314,7 +314,14 @@
     transform: translateX(-50%) translateY(0);
     }
 
-    .card-info { padding-right: 100px; }     
+    .card-info { padding-right: 100px; } 
+
+    .card-info { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 80%, transparent 100%); z-index: 4; }
+    .card-still { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65) saturate(0.75); transition: opacity 0.4s; display: block; position: relative; z-index: 2; }
+    .card-gif { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s; display: block; z-index: 1; }
+    .project-card:hover .card-still { opacity: 0; }
+    .project-card:hover .card-gif { opacity: 1 !important; }
+    .card-logos { z-index: 5; }
   </style>
 </head>
 <body>
@@ -376,8 +383,9 @@
   <div class="projects-grid">
 
     <a href="project-kintsugi.html" class="project-card reveal">
-      <div class="media-wrap">
-        <img data-src="GIF_Walk.gif" alt="Kintsugi project" />
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/screen_kintsugi.png" alt="Kintsugi" class="card-still" />
+        <img src="/Portfolio/GIF_Walk.gif" alt="Kintsugi gif" class="card-gif" />
       </div>
       <div class="card-info">
         <p class="card-tag">Graduation Project · 17 Weeks</p>
@@ -403,8 +411,9 @@
     </a>
 
     <a href="games.html" class="project-card reveal" style="transition-delay:0.1s">
-      <div class="media-wrap">
-        <img data-src="https://placehold.co/800x500/1a1a1a/444?text=Masocat" alt="Masocat project" />
+      <div class="media-wrap loaded">
+         <img src="/Portfolio/screen-masocat.png" alt="Masocat" class="card-still" />
+         <img src="/Portfolio/Masocat.gif" alt="Masocat gif" class="card-gif" />
       </div>
       <div class="card-info">
         <p class="card-tag">Bachelor Project · 2 Months</p>
