@@ -1,341 +1,67 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.youtube.com;">
-  <meta http-equiv="Content-Security-Policy" content="frame-src https://www.youtube.com">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.youtube.com;">
   <title>Enzo de Corte — Kintsugi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-
-    /* ===== PROJECT HERO ===== */
-    .proj-hero {
-      padding-top: var(--nav-h);
-      position: relative;
-    }
-
-    .proj-hero-media {
-      width: 100%;
-      aspect-ratio: 21/9;
-      overflow: hidden;
-    }
-
-    .proj-hero-media img,
-    .proj-hero-media video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.75);
-    }
-
-    /* Overlay gradient at bottom */
-    .proj-hero-media::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to top, var(--bg), transparent);
-    }
-
-    .proj-hero-info {
-      padding: 48px 40px 0;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: end;
-    }
-
-    .proj-breadcrumb {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .proj-hero { padding-top: var(--nav-h); position: relative; }
+    .proj-hero-media { width: 100%; aspect-ratio: 21/9; overflow: hidden; }
+    .proj-hero-media img, .proj-hero-media video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); }
+    .proj-hero-media::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, var(--bg), transparent); }
+    .proj-hero-info { padding: 48px 40px 0; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+    .proj-breadcrumb { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
     .proj-breadcrumb a { color: var(--muted); transition: color 0.2s; }
     .proj-breadcrumb a:hover { color: var(--accent); }
-
-    .proj-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .proj-tagline {
-      color: var(--muted);
-      margin-top: 14px;
-      font-size: 0.95rem;
-      max-width: 600px;
-      line-height: 1.7;
-    }
-
-    .proj-meta-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      min-width: 180px;
-    }
-
-    .proj-meta-item label {
-      display: block;
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .proj-meta-item span {
-      font-size: 0.82rem;
-      color: var(--text);
-    }
-
-    .proj-cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 24px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      padding: 10px 20px;
-      color: var(--text);
-      transition: border-color 0.2s, color 0.2s;
-    }
+    .proj-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.05; }
+    .proj-tagline { color: var(--muted); margin-top: 14px; font-size: 0.95rem; max-width: 600px; line-height: 1.7; }
+    .proj-meta-list { display: flex; flex-direction: column; gap: 16px; min-width: 180px; }
+    .proj-meta-item label { display: block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .proj-meta-item span { font-size: 0.82rem; color: var(--text); }
+    .proj-cta-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--border); padding: 10px 20px; color: var(--text); transition: border-color 0.2s, color 0.2s; }
     .proj-cta-link:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Divider */
-    .proj-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 56px 40px;
-    }
-
-    /* ===== CONTENT BLOCKS ===== */
-    /*
-      Structure modulaire :
-      Chaque .block-* est indépendant — réordonne les blocs HTML comme tu veux.
-    */
-
-    .proj-content {
-      padding: 0 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* TEXT BLOCK */
-    .block-text {
-      max-width: 680px;
-      margin: 0 auto 72px;
-    }
-
-    .block-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .block-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 600;
-      margin-bottom: 20px;
-      line-height: 1.15;
-    }
-
-    .block-body {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.85;
-    }
-
+    .proj-divider { height: 1px; background: var(--border); margin: 56px 40px; }
+    .proj-content { padding: 0 40px; max-width: 1200px; margin: 0 auto; }
+    .block-text { max-width: 680px; margin: 0 auto 72px; }
+    .block-label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .block-heading { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; margin-bottom: 20px; line-height: 1.15; }
+    .block-body { color: var(--muted); font-size: 0.95rem; line-height: 1.85; }
     .block-body p + p { margin-top: 16px; }
-
-    /* MEDIA GRID - 1 col (full) */
-    .block-media-full {
-      margin-bottom: 72px;
-    }
-
-    .block-media-full .media-wrap {
-      aspect-ratio: 16/9;
-    }
-
-    .media-caption {
-      margin-top: 10px;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* MEDIA GRID - 2 col */
-    .block-media-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 72px;
-    }
-
-    .block-media-2col .media-wrap {
-      aspect-ratio: 4/3;
-    }
-
-    /* MEDIA GRID - 3 col */
-    .block-media-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-bottom: 72px;
-    }
-
-    .block-media-3col .media-wrap {
-      aspect-ratio: 1/1;
-    }
-
-    /* MEDIA GRID - mixed (1 big + 2 small) */
-    .block-media-mixed {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 2px;
-      margin-bottom: 72px;
-    }
-
-    .block-media-mixed .main-media {
-      grid-row: 1 / 3;
-    }
-
-    .block-media-mixed .media-wrap {
-      aspect-ratio: 4/3;
-      height: 100%;
-    }
-
-    .block-media-mixed .main-media .media-wrap {
-      aspect-ratio: unset;
-      height: 100%;
-    }
-
-    /* IMAGE + TEXT SIDE BY SIDE */
-    .block-side {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-bottom: 80px;
-    }
-
+    .block-media-full { margin-bottom: 72px; }
+    .block-media-full .media-wrap { aspect-ratio: 16/9; }
+    .media-caption { margin-top: 10px; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); text-align: center; }
+    .block-media-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 72px; }
+    .block-media-2col .media-wrap { aspect-ratio: 4/3; }
+    .block-media-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 72px; }
+    .block-media-3col .media-wrap { aspect-ratio: 1/1; }
+    .block-side { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
     .block-side.reverse { direction: rtl; }
     .block-side.reverse > * { direction: ltr; }
-
-    .block-side .media-wrap {
-      aspect-ratio: 4/3;
-    }
-
-    /* LABELED GALLERY (ex: Spine rig) */
-    .block-labeled-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 72px;
-    }
-
-    .labeled-item {}
-
-    .labeled-item .media-wrap {
-      aspect-ratio: 4/3;
-    }
-
-    .labeled-item figcaption {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-top: 8px;
-      text-align: center;
-    }
-
-    /* ===== "YOU MAY ALSO LIKE" ===== */
-    .related-section {
-      border-top: 1px solid var(--border);
-      padding: 64px 40px;
-    }
-
-    .related-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 40px;
-    }
-
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .related-card {
-      position: relative;
-      overflow: hidden;
-      display: block;
-    }
-
-    .related-card .media-wrap {
-      aspect-ratio: 4/3;
-    }
-
-    .related-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.6) saturate(0.7);
-      transition: transform 0.5s var(--ease-out), filter 0.4s;
-    }
-
-    .related-card:hover img {
-      transform: scale(1.04);
-      filter: brightness(0.4) saturate(0.5);
-    }
-
-    .related-info {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 20px 18px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-    }
-
-    .related-info h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .related-info p {
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
+    .block-side .media-wrap { aspect-ratio: 4/3; }
+    .block-labeled-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; }
+    .labeled-item .media-wrap { aspect-ratio: 4/3; }
+    .labeled-item figcaption { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 8px; text-align: center; }
+    .related-section { border-top: 1px solid var(--border); padding: 64px 40px; }
+    .related-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 40px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { position: relative; overflow: hidden; display: block; }
+    .related-card .media-wrap { aspect-ratio: 4/3; }
+    .related-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) saturate(0.7); transition: transform 0.5s var(--ease-out), filter 0.4s; }
+    .related-card:hover img { transform: scale(1.04); filter: brightness(0.4) saturate(0.5); }
+    .related-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); }
+    .related-info h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; }
+    .related-info p { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
     @media (max-width: 900px) {
       .proj-hero-media { aspect-ratio: 16/9; }
       .proj-hero-info { grid-template-columns: 1fr; padding: 32px 20px 0; }
       .proj-content { padding: 0 20px; }
       .proj-divider { margin: 40px 20px; }
-      .block-media-2col,
-      .block-media-3col,
-      .block-labeled-gallery { grid-template-columns: 1fr; }
-      .block-media-mixed { grid-template-columns: 1fr; }
-      .block-media-mixed .main-media { grid-row: auto; }
+      .block-media-2col, .block-media-3col, .block-labeled-gallery { grid-template-columns: 1fr; }
       .block-side { grid-template-columns: 1fr; gap: 32px; }
       .block-side.reverse { direction: ltr; }
       .related-grid { grid-template-columns: 1fr; }
@@ -347,9 +73,7 @@
 
 <nav>
   <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
-  <button class="nav-burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="games.html">Games</a></li>
@@ -360,17 +84,10 @@
   </ul>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="proj-hero">
-  <div class="proj-hero-media media-wrap">
-    <!--
-      💡 TIP PERFORMANCE : remplace le GIF par une vidéo !
-      <video data-src="kintsugi-hero.mp4" autoplay loop muted playsinline></video>
-      → jusqu'à 10× moins lourd qu'un GIF
-    -->
-   <img data-src="/Portfolio/GIF_Walk.gif" data-static="/Portfolio/assets/screen_kintsugi.png" alt="Kintsugi gameplay" class="hover-gif" />
+  <div class="proj-hero-media media-wrap loaded">
+    <img src="/Portfolio/GIF_Walk.gif" alt="Kintsugi gameplay" class="loaded" style="opacity:1; width:100%; height:100%; object-fit:cover; filter:brightness(0.75);" />
   </div>
-
   <div class="proj-hero-info reveal">
     <div>
       <div class="proj-breadcrumb">
@@ -379,89 +96,48 @@
         <span>Kintsugi</span>
       </div>
       <h1 class="proj-title">Graduation Project —<br>Animator & VFX Artist</h1>
-      <p class="proj-tagline">
-        Kintsugi is a singleplayer, 2D contemplative platformer set in a fantastical universe, where you heal & repair a broken world inspired by Kintsugi art.
-      </p>
+      <p class="proj-tagline">Kintsugi is a singleplayer, 2D contemplative platformer set in a fantastical universe, where you heal & repair a broken world inspired by Kintsugi art.</p>
       <a href="https://store.steampowered.com/app/4395600/Kintsugi/" target="_blank" class="proj-cta-link">
         View on Steam
-        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-          <path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
-        </svg>
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
       </a>
     </div>
-
     <div class="proj-meta-list">
-      <div class="proj-meta-item">
-        <label>Role</label>
-        <span>Animator & VFX Artist</span>
-      </div>
-      <div class="proj-meta-item">
-        <label>Duration</label>
-        <span>17 Weeks</span>
-      </div>
-      <div class="proj-meta-item">
-        <label>Tools</label>
-        <span>Unity · Spine · Photoshop</span>
-      </div>
-      <div class="proj-meta-item">
-        <label>Type</label>
-        <span>Graduation Project</span>
-      </div>
+      <div class="proj-meta-item"><label>Role</label><span>Animator & VFX Artist</span></div>
+      <div class="proj-meta-item"><label>Duration</label><span>17 Weeks</span></div>
+      <div class="proj-meta-item"><label>Tools</label><span>Unity · Spine · Photoshop</span></div>
+      <div class="proj-meta-item"><label>Type</label><span>Graduation Project</span></div>
     </div>
   </div>
 </section>
 
 <div class="proj-divider"></div>
 
-<!-- ===== CONTENT ===== -->
-<!--
-  💡 COMMENT PERSONNALISER :
-  Chaque "block-*" est indépendant.
-  Tu peux copier/coller, supprimer, ou réordonner les blocs librement.
-  Les types disponibles sont :
-    .block-text          → texte seul
-    .block-media-full    → 1 média pleine largeur
-    .block-media-2col    → 2 médias côte à côte
-    .block-media-3col    → 3 médias en grille
-    .block-media-mixed   → 1 grand + 2 petits
-    .block-labeled-gallery → galerie avec légendes
-    .block-side          → texte + image côte à côte
-    .block-side.reverse  → image + texte (inversé)
--->
-
 <div class="proj-content">
 
-<!-- Intro Video -->
-<div class="block-media-full reveal">
-  <div style="aspect-ratio:16/9; position:relative; overflow:hidden;">
-    <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA" title="Kintsugi Trailer" frameborder="0" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+  <div class="block-media-full reveal">
+    <div style="aspect-ratio:16/9; position:relative; overflow:hidden;">
+      <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA" title="Kintsugi Trailer" frameborder="0" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+    </div>
+    <p class="media-caption">Kintsugi — Official Trailer</p>
   </div>
-  <p class="media-caption">Kintsugi — Official Trailer</p>
-</div>
 
-<!-- Gameplay Video -->
-<div class="block-media-full reveal">
-  <div style="aspect-ratio:16/9; position:relative; overflow:hidden;">
-    <iframe src="https://www.youtube.com/embed/q_fi8RYT7TI" title="Kintsugi Gameplay" frameborder="0" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+  <div class="block-media-full reveal">
+    <div style="aspect-ratio:16/9; position:relative; overflow:hidden;">
+      <iframe src="https://www.youtube.com/embed/q_fi8RYT7TI" title="Kintsugi Gameplay" frameborder="0" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%;"></iframe>
+    </div>
+    <p class="media-caption">Kintsugi — Gameplay Soutenance</p>
   </div>
-  <p class="media-caption">Kintsugi — Gameplay Soutenance</p>
-</div>
 
-  <!-- TEXT: Rôle -->
   <div class="block-text reveal">
     <p class="block-label">My Role</p>
     <h2 class="block-heading">2D Animation & Cinematics</h2>
     <div class="block-body">
-      <p>
-        As 2D Animator on this student project, I animated characters using Spine, with a strong focus on acting, emotional expression, and player readability. To accommodate a dense narrative, the project is structured around fragmented biomes, allowing us to showcase the game's universe while maintaining a high level of polish.
-      </p>
-      <p>
-        I also created cinematics and animated animals and creatures specific to each biome, reinforcing visual variety and narrative depth.
-      </p>
+      <p>As 2D Animator on this student project, I animated characters using Spine, with a strong focus on acting, emotional expression, and player readability. To accommodate a dense narrative, the project is structured around fragmented biomes, allowing us to showcase the game's universe while maintaining a high level of polish.</p>
+      <p>I also created cinematics and animated animals and creatures specific to each biome, reinforcing visual variety and narrative depth.</p>
     </div>
   </div>
 
-  <!-- MEDIA 2col -->
   <div class="block-media-2col reveal">
     <div class="media-wrap">
       <img data-src="https://placehold.co/700x525/141414/333?text=Animation+01" alt="Animation 01" />
@@ -471,90 +147,92 @@
     </div>
   </div>
 
-  <!-- MEDIA full -->
   <div class="block-media-full reveal">
     <div class="media-wrap">
       <img data-src="https://placehold.co/1200x675/141414/333?text=Cinematic+01" alt="Cinematic" />
     </div>
   </div>
 
-  <!-- TEXT: Cinematics -->
   <div class="block-text reveal">
     <p class="block-label">Challenge #1</p>
     <h2 class="block-heading">Cinematics & Collaboration</h2>
     <div class="block-body">
-      <p>
-        A major challenge was working on cinematics in collaboration with other team members to set up framing and create the storyboard. This required me to be highly communicative, organized, and clever: I had to create separate animations that seamlessly fit together and play smoothly, while ensuring the player could fully feel the character's emotions, without ever noticing when sequences were cut or combined.
-      </p>
+      <p>A major challenge was working on cinematics in collaboration with other team members to set up framing and create the storyboard. This required me to be highly communicative, organized, and clever: I had to create separate animations that seamlessly fit together and play smoothly, while ensuring the player could fully feel the character's emotions, without ever noticing when sequences were cut or combined.</p>
     </div>
   </div>
 
-  <!-- LABELED GALLERY: Spine Rig -->
   <div class="block-text reveal" style="margin-bottom: 24px;">
     <p class="block-label">Challenge #2</p>
     <h2 class="block-heading">Spine Rig & Physical Constraints</h2>
     <div class="block-body">
-      <p>
-        The character's Spine rig is based on physical constraints to simulate the movement of clothing and hair without the need for manual animation. This approach results in smoother, more realistic motion while optimizing production time.
-      </p>
+      <p>The character's Spine rig is based on physical constraints to simulate the movement of clothing and hair without the need for manual animation. This approach results in smoother, more realistic motion while optimizing production time.</p>
     </div>
   </div>
 
-<div class="block-labeled-gallery reveal">
-  <figure class="labeled-item">
-    <div class="media-wrap loaded">
-      <img src="/Portfolio/Set_Up_Spine.png" alt="Spine setup" style="opacity:1;" class="loaded" />
-    </div>
-    <figcaption>Set_Up_Spine</figcaption>
-  </figure>
-  <figure class="labeled-item">
-    <div class="media-wrap loaded">
-      <img src="/Portfolio/Physical_Constraints.gif" alt="Physical constraints" style="opacity:1;" class="loaded" />
-    </div>
-    <figcaption>Physical_Constraints</figcaption>
-  </figure>
-  <figure class="labeled-item">
-    <div class="media-wrap loaded">
-      <img src="/Portfolio/Physical_Constraints_Head.gif" alt="Physical constraints head" style="opacity:1;" class="loaded" />
-    </div>
-    <figcaption>Physical_Constraints_Head</figcaption>
-  </figure>
-</div>
-
-  <!-- SIDE: Gold Corruption -->
   <div class="block-labeled-gallery reveal">
-  <figure class="labeled-item">
-    <div class="media-wrap loaded">
-      <img src="/Portfolio/Atlas.png" alt="Atlas" style="opacity:1;" class="loaded" />
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Set_Up_Spine.png" alt="Spine setup" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Set_Up_Spine</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Physical_Constraints.gif" alt="Physical constraints" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Physical_Constraints</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Physical_Constraints_Head.gif" alt="Physical constraints head" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Physical_Constraints_Head</figcaption>
+    </figure>
+  </div>
+
+  <div class="block-side reveal">
+    <div>
+      <p class="block-label">Challenge #3</p>
+      <h2 class="block-heading">Gold Corruption VFX</h2>
+      <div class="block-body">
+        <p>My third major challenge was designing and animating the gold corruption affecting the character. I worked directly from the character's Spine atlas, drawing and painting over it in Photoshop to define how the corruption would progressively appear.</p>
+        <p>The main difficulty was finding the right scale and thickness of the gold filaments, as the game features both highly zoomed-in cinematics and heavily zoomed-out gameplay, making visual readability a constant challenge.</p>
+      </div>
     </div>
-    <figcaption>Atlas</figcaption>
-  </figure>
-  <figure class="labeled-item">
-    <div class="media-wrap loaded">
-      <img src="/Portfolio/Texture_Gold_Corruptions.png" alt="Texture gold corruption" style="opacity:1;" class="loaded" />
-    </div>
-    <figcaption>Texture_Gold_Corruption</figcaption>
-  </figure>
-  <figure class="labeled-item">
     <div class="media-wrap loaded">
       <img src="/Portfolio/Gold_Corruption.gif" alt="Gold corruption" style="opacity:1;" class="loaded" />
     </div>
-    <figcaption>Unity_Gold_Corruption</figcaption>
-  </figure>
-</div>
+  </div>
 
-  <!-- TEXT: Bonus -->
+  <div class="block-labeled-gallery reveal">
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Atlas.png" alt="Atlas" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Atlas</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Texture_Gold_Corruptions.png" alt="Texture gold corruption" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Texture_Gold_Corruption</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded">
+        <img src="/Portfolio/Gold_Corruption.gif" alt="Gold corruption unity" style="opacity:1;" class="loaded" />
+      </div>
+      <figcaption>Unity_Gold_Corruption</figcaption>
+    </figure>
+  </div>
+
   <div class="block-text reveal">
     <p class="block-label">Bonus</p>
     <h2 class="block-heading">Particle Systems & Shaders</h2>
     <div class="block-body">
-      <p>
-        When I finished my tasks ahead of schedule, I also contributed to creating particle systems and implementing shaders, which allowed me to add extra visual details and enhance the game's immersion.
-      </p>
+      <p>When I finished my tasks ahead of schedule, I also contributed to creating particle systems and implementing shaders, which allowed me to add extra visual details and enhance the game's immersion.</p>
     </div>
   </div>
 
-  <!-- MEDIA 3col: bonus shots -->
   <div class="block-media-3col reveal">
     <div class="media-wrap">
       <img data-src="https://placehold.co/500x500/141414/333?text=VFX+01" alt="VFX 01" />
@@ -567,14 +245,12 @@
     </div>
   </div>
 
-</div><!-- /proj-content -->
+</div>
 
-<!-- ===== RELATED ===== -->
 <section class="related-section">
   <p class="related-label">You may also like</p>
   <div class="related-grid">
-
-    <a href="#" class="related-card reveal">
+    <a href="/Portfolio/project-lastnighttohunt.html" class="related-card reveal">
       <div class="media-wrap">
         <img data-src="https://placehold.co/600x450/141414/333?text=The+Last+Night+to+Hunt" alt="The Last Night to Hunt" />
       </div>
@@ -583,18 +259,7 @@
         <p>First Project · 3D Modeler & Animator · 1 Month</p>
       </div>
     </a>
-
-    <a href="#" class="related-card reveal" style="transition-delay:0.1s">
-      <div class="media-wrap">
-        <img data-src="https://placehold.co/600x450/141414/333?text=Epistolaris+Revolution" alt="Epistolaris Revolution" />
-      </div>
-      <div class="related-info">
-        <h4>Epistolaris Revolution</h4>
-        <p>Story Game · 2 Weeks</p>
-      </div>
-    </a>
-
-    <a href="#" class="related-card reveal" style="transition-delay:0.2s">
+    <a href="/Portfolio/project-masocat.html" class="related-card reveal" style="transition-delay:0.1s">
       <div class="media-wrap">
         <img data-src="https://placehold.co/600x450/141414/333?text=Masocat" alt="Masocat" />
       </div>
@@ -603,7 +268,15 @@
         <p>Bachelor Project · Animator & 3D Modeler · 2 Months</p>
       </div>
     </a>
-
+    <a href="/Portfolio/project-kourou.html" class="related-card reveal" style="transition-delay:0.2s">
+      <div class="media-wrap">
+        <img data-src="https://placehold.co/600x450/141414/333?text=Kourou+Space+Coop" alt="Kourou" />
+      </div>
+      <div class="related-info">
+        <h4>Kourou Space Coop</h4>
+        <p>Internship · 2 Months</p>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -629,3 +302,4 @@
 <script src="main.js"></script>
 </body>
 </html>
+```
