@@ -196,7 +196,7 @@ footer p {
   background: linear-gradient(90deg, var(--surface) 25%, #222 50%, var(--surface) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
-  z-index: 1;
+  z-index: 0;
   transition: opacity 0.4s;
   pointer-events: none;
 }
