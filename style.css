@@ -175,12 +175,15 @@ footer p {
 
 .media-wrap .card-gif {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity 0.4s;
+  z-index: 3;
+  display: block;
 }
 
 .project-card:hover .card-still { opacity: 0; }
