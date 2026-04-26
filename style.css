@@ -195,6 +195,13 @@ footer p {
   animation: shimmer 1.4s infinite;
   z-index: 1;
   transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.media-wrap .card-still,
+.media-wrap .card-gif {
+  position: relative;
+  z-index: 2;
 }
 .media-wrap.loaded::before { opacity: 0; pointer-events: none; }
 
