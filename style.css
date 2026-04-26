@@ -187,6 +187,7 @@ footer p {
 }
 
 .project-card:hover .card-still { opacity: 0; }
+.project-card .card-info { opacity: 1; }
 .project-card:hover .card-gif { opacity: 1 !important; }
 
 .media-wrap::before {
