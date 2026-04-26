@@ -198,10 +198,14 @@ footer p {
   pointer-events: none;
 }
 
-.media-wrap .card-still,
-.media-wrap .card-gif {
+.media-wrap .card-still {
   position: relative;
   z-index: 2;
+}
+
+.media-wrap .card-gif {
+  position: absolute;
+  z-index: 3;
 }
 .media-wrap.loaded::before { opacity: 0; pointer-events: none; }
 
