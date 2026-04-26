@@ -164,8 +164,21 @@ footer p {
 
 .media-wrap img.loaded,
 .media-wrap video.loaded { opacity: 1; }
-.card-still { opacity: 1 !important; }
-.card-video { opacity: 0 !important; }
+.media-wrap .card-still {
+  opacity: 1;
+  filter: brightness(0.65) saturate(0.75);
+  transition: opacity 0.4s;
+}
+
+.media-wrap .card-gif {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.project-card:hover .card-still { opacity: 0; }
+.project-card:hover .card-gif { opacity: 1; }
 
 .media-wrap::before {
   content: '';
