@@ -91,10 +91,13 @@
 <section style="position:relative; overflow:hidden; min-height:100vh;">
 
   <!-- Vidéo YouTube -->
-  <div style="position:absolute; inset:0; z-index:0;">
-    <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA?autoplay=1&mute=1&loop=1&playlist=TkcP0TLfAFA&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.4); pointer-events:none;"></iframe>
-    <div style="position:absolute; inset:0; z-index:1;"></div>
-  </div>
+<div style="position:absolute; inset:0; z-index:0;">
+  <!-- Fond flouté -->
+  <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA?autoplay=1&mute=1&loop=1&playlist=TkcP0TLfAFA&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:200%; height:200%; filter:brightness(0.3) blur(20px); pointer-events:none;"></iframe>
+  <!-- Vidéo principale -->
+  <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA?autoplay=1&mute=1&loop=1&playlist=TkcP0TLfAFA&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; height:100%; object-fit:contain; pointer-events:none;"></iframe>
+  <div style="position:absolute; inset:0; z-index:1;"></div>
+</div>
 
   <!-- Contenu superposé -->
   <div style="position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding: calc(var(--nav-h) + 60px) 40px 80px;">
