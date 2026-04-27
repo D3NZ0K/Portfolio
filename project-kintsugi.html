@@ -88,37 +88,47 @@
   </ul>
 </nav>
 
-<section class="proj-hero">
-  <div class="proj-hero-media" style="position:relative; overflow:hidden; aspect-ratio:16/9; min-height:100vh;">
-  <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA?autoplay=1&mute=1&loop=1&playlist=TkcP0TLfAFA&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.75); pointer-events:none;"></iframe>
-  <div style="position:absolute; inset:0; z-index:1;"></div>
-    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; animation: bounce 2s infinite;">
-  <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Scroll</span>
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round">
-    <path d="M12 5v14M5 12l7 7 7-7"/>
-  </svg>
-</div>
-</div>
-  <div class="proj-hero-info reveal">
-    <div>
-      <div class="proj-breadcrumb">
-        <a href="games.html">Games</a>
-        <span>›</span>
-        <span>Kintsugi</span>
+<section style="position:relative; overflow:hidden; min-height:100vh;">
+
+  <!-- Vidéo YouTube -->
+  <div style="position:absolute; inset:0; z-index:0;">
+    <iframe src="https://www.youtube.com/embed/TkcP0TLfAFA?autoplay=1&mute=1&loop=1&playlist=TkcP0TLfAFA&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.4); pointer-events:none;"></iframe>
+    <div style="position:absolute; inset:0; z-index:1;"></div>
+  </div>
+
+  <!-- Contenu superposé -->
+  <div style="position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding: calc(var(--nav-h) + 60px) 40px 80px;">
+    
+    <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
+      <div>
+        <div class="proj-breadcrumb">
+          <a href="games.html">Games</a>
+          <span>›</span>
+          <span>Kintsugi</span>
+        </div>
+        <h1 class="proj-title">Graduation Project —<br>Animator & VFX Artist</h1>
+        <p class="proj-tagline">Kintsugi is a singleplayer, 2D contemplative platformer set in a fantastical universe, where you heal & repair a broken world inspired by Kintsugi art.</p>
+        <a href="https://store.steampowered.com/app/4395600/Kintsugi/" target="_blank" class="proj-cta-link">
+          <img src="/Portfolio/logo_steam.png" alt="Steam" style="width:24px; height:24px; display:block; opacity:1;" />
+          View on Steam
+        </a>
       </div>
-      <h1 class="proj-title">Graduation Project —<br>Animator & VFX Artist</h1>
-      <p class="proj-tagline">Kintsugi is a singleplayer, 2D contemplative platformer set in a fantastical universe, where you heal & repair a broken world inspired by Kintsugi art.</p>
-      <a href="https://store.steampowered.com/app/4395600/Kintsugi/" target="_blank" class="proj-cta-link">
-  <img src="/Portfolio/logo_steam.png" alt="Steam" style="width:24px; height:24px; display:block; opacity:1;" />
-  View on Steam
-</a>
+      <div class="proj-meta-list">
+        <div class="proj-meta-item"><label>Role</label><span>Animator & VFX Artist</span></div>
+        <div class="proj-meta-item"><label>Duration</label><span>17 Weeks</span></div>
+        <div class="proj-meta-item"><label>Tools</label><span>Unity · Spine · Photoshop</span></div>
+        <div class="proj-meta-item"><label>Type</label><span>Graduation Project</span></div>
+      </div>
     </div>
-    <div class="proj-meta-list">
-      <div class="proj-meta-item"><label>Role</label><span>Animator & VFX Artist</span></div>
-      <div class="proj-meta-item"><label>Duration</label><span>17 Weeks</span></div>
-      <div class="proj-meta-item"><label>Tools</label><span>Unity · Spine · Photoshop</span></div>
-      <div class="proj-meta-item"><label>Type</label><span>Graduation Project</span></div>
+
+    <!-- Scroll indicator -->
+    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation: bounce 2s infinite;">
+      <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Scroll</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
     </div>
+
   </div>
 </section>
 
