@@ -272,4 +272,9 @@
   .block-media-2col,
   .block-media-3col,
   .block-labeled-gallery { grid-template-columns: 1fr; }
+
+   @keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
 }
