@@ -24,22 +24,48 @@
 </nav>
 
 <!-- HERO -->
-<section class="proj-hero">
-  <div class="proj-hero-media media-wrap">
-    <img data-src="https://placehold.co/1600x686/141414/333?text=Masocat+Hero" alt="Masocat" />
+<section style="position:relative; overflow:hidden; min-height:100vh;">
+
+  <!-- Vidéo YouTube -->
+  <div style="position:absolute; inset:0; z-index:0;">
+    <iframe src="https://www.youtube.com/embed/q2qsSUEFfcI?autoplay=1&mute=1&loop=1&playlist=q2qsSUEFfcI&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&vq=hd1080" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.75); pointer-events:none;"></iframe>
+    <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 40%); z-index:1; pointer-events:none;"></div>
+    <div style="position:absolute; inset:0; z-index:1;"></div>
   </div>
-  <div class="proj-hero-info reveal">
-    <div>
-      <div class="proj-breadcrumb"><a href="games.html">Games</a><span>›</span><span>Masocat</span></div>
-      <h1 class="proj-title">Bachelor Project —<br>Animator & 3D Modeler</h1>
-      <p class="proj-tagline">Welcome to Masocat! An arena fighting game for 2 to 4 players where you need to be the first to die!</p>
+
+  <!-- Contenu superposé -->
+  <div style="position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding: calc(var(--nav-h) + 60px) 40px 80px;">
+    
+    <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
+      <div>
+        <div class="proj-breadcrumb">
+          <a href="games.html">Games</a>
+          <span>›</span>
+          <span>Masocat</span>
+        </div>
+        <h1 class="proj-title">Bachelor Project —<br>Animator & 3D Modeler</h1>
+        <p class="proj-tagline">Welcome to Masocat! An arena fighting game for 2 to 4 players where you need to be the first to die!</p>
+        <a href="https://aramiss.itch.io/masocat" target="_blank" class="proj-cta-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg>
+          View on Itch.io
+        </a>
+      </div>
+      <div class="proj-meta-list">
+        <div class="proj-meta-item"><label>Role</label><span>Animator & 3D Modeler</span></div>
+        <div class="proj-meta-item"><label>Duration</label><span>2 Months</span></div>
+        <div class="proj-meta-item"><label>Tools</label><span>Blender · 3DS Max · Unity</span></div>
+        <div class="proj-meta-item"><label>Type</label><span>Bachelor Project</span></div>
+      </div>
     </div>
-    <div class="proj-meta-list">
-      <div class="proj-meta-item"><label>Role</label><span>Animator & 3D Modeler</span></div>
-      <div class="proj-meta-item"><label>Duration</label><span>2 Months</span></div>
-      <div class="proj-meta-item"><label>Tools</label><span>Blender · 3DS Max · Unity</span></div>
-      <div class="proj-meta-item"><label>Type</label><span>Bachelor Project</span></div>
+
+    <!-- Scroll indicator -->
+    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation: bounce 2s infinite;">
+      <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Scroll</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
     </div>
+
   </div>
 </section>
 
