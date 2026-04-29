@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enzo de Corte — 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .art-page { padding: calc(var(--nav-h) + 60px) 40px 80px; max-width: 1200px; margin: 0 auto; }
+    .art-hero { margin-bottom: 72px; }
+    .art-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .art-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 600; line-height: 1.05; }
+    .art-sub { color: var(--muted); max-width: 500px; margin-top: 16px; font-size: 0.95rem; line-height: 1.7; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section-block { margin-bottom: 72px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .gallery-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .gallery-item { position: relative; overflow: hidden; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1; transition: transform 0.5s var(--ease-out); }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item figcaption { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 8px; text-align: center; }
+    .aspect-4-3 { aspect-ratio: 4/3; }
+    .aspect-1-1 { aspect-ratio: 1/1; }
+    .aspect-16-9 { aspect-ratio: 16/9; }
+    .related-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 80px; border-top: 1px solid var(--border); padding-top: 48px; }
+    .related-nav a { display: block; padding: 20px; border: 1px solid var(--border); text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .related-nav a:hover { color: var(--text); border-color: var(--accent); background: var(--accent-dim); }
+    .related-nav a.active { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 768px) {
+      .art-page { padding: calc(var(--nav-h) + 40px) 20px 60px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-2col { grid-template-columns: 1fr; }
+      .related-nav { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
+  <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="games.html">Games</a></li>
+    <li><a href="art.html">Art</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="archive.html">Archive</a></li>
+  </ul>
+</nav>
+
+<div class="art-page">
+
+  <header class="art-hero reveal">
+    <p class="art-eyebrow">Art — 3D</p>
+    <h1 class="art-title">3D</h1>
+    <p class="art-sub">3D modeling, rendering and environment work across Blender, 3DS Max, Unreal Engine and ZBrush.</p>
+  </header>
+
+  <!-- 3DS MAX -->
+  <div class="section-block reveal">
+    <p class="section-label">3DS Max</p>
+    <div class="gallery-2col">
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/Tortureroom3dsmax.png" alt="Torture Room 3DS Max" />
+        </div>
+        <figcaption>Torture_Room_3ds_Max</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/wireframetortureroom.png" alt="Wireframe Torture Room" />
+        </div>
+        <figcaption>Wireframe_Torture_Room</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- UNREAL ENGINE -->
+  <div class="section-block reveal">
+    <p class="section-label">Unreal Engine</p>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/screen1.png" alt="Screen 1" />
+        </div>
+        <figcaption>Screen_1</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/screen2.png" alt="Screen 2" />
+        </div>
+        <figcaption>Screen_2</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/screen3.png" alt="Screen 3" />
+        </div>
+        <figcaption>Screen_3</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/renderunrealdesk.png" alt="Final Render Unreal Desk" />
+        </div>
+        <figcaption>Final_Render_Unreal_Desk</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/optimizationviewunrealdesk.png" alt="Optimization View Unreal Desk" />
+        </div>
+        <figcaption>Optimization_View_Unreal_Desk</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/renderunrealdoor.png" alt="Final Render Unreal Door" />
+        </div>
+        <figcaption>Final_Render_Unreal_Door</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/optimizationviewunrealdoor.png" alt="Optimization View Unreal Door" />
+        </div>
+        <figcaption>Optimization_View_Unreal_Door</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/renderunrealcar.png" alt="Final Render Unreal Car" />
+        </div>
+        <figcaption>Final_Render_Unreal_Car</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/optimizationviewunrealcar.png" alt="Optimization View Unreal Car" />
+        </div>
+        <figcaption>Optimization_View_Unreal_Car</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- BLENDER -->
+  <div class="section-block reveal">
+    <p class="section-label">Blender</p>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/mushroomblender.png" alt="Mushroom Blender" />
+        </div>
+        <figcaption>Mushroom_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/robotblender.png" alt="Robot Blender" />
+        </div>
+        <figcaption>Robot_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/glassblender.png" alt="Glass Blender" />
+        </div>
+        <figcaption>Glass_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/phoneblender.png" alt="Phone Blender" />
+        </div>
+        <figcaption>Phone_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/bedroomblender.png" alt="Bedroom Blender" />
+        </div>
+        <figcaption>Bedroom_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/bedroomwireframeblender.png" alt="Bedroom Wireframe Blender" />
+        </div>
+        <figcaption>Bedroom_Wireframe_Blender</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/distributerblender.png" alt="Distributer Blender" />
+        </div>
+        <figcaption>Distributer_Blender</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ZBRUSH -->
+  <div class="section-block reveal">
+    <p class="section-label">ZBrush</p>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/skullzbrush.png" alt="Human Skull ZBrush" />
+        </div>
+        <figcaption>human_skull_Zbrush</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/skullzbrush2.png" alt="Human Skull ZBrush 2" />
+        </div>
+        <figcaption>human_skull_Zbrush_2</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="aspect-4-3">
+          <img src="/Portfolio/skullzbrush3.png" alt="Human Skull ZBrush 3" />
+        </div>
+        <figcaption>human_skull_Zbrush_3</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- RELATED NAV -->
+  <nav class="related-nav reveal">
+    <a href="art-3d.html" class="active">3D</a>
+    <a href="art-texturing.html">Texturing</a>
+    <a href="art-vfx.html">VFX</a>
+    <a href="art-traditional.html">Traditional Drawing</a>
+    <a href="art-tablet.html">Graphics Tablet</a>
+  </nav>
+
+</div>
+
+<footer>
+  <p>© 2025 Enzo de Corte</p>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://d3nz0k.artstation.com" target="_blank" aria-label="ArtStation"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
+    <a href="https://github.com/D3NZ0K" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+    <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
+  </div>
+</footer>
+
+<button class="back-top" aria-label="Back to top">↑</button>
+<script src="main.js"></script>
+</body>
+</html>
