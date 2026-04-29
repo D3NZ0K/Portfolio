@@ -23,7 +23,7 @@
     .gallery-item figcaption { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 8px; text-align: center; }
     .aspect-4-3 { aspect-ratio: 4/3; }
     .aspect-16-9 { aspect-ratio: 16/9; }
-    .related-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 80px; border-top: 1px solid var(--border); padding-top: 48px; }
+    .related-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 80px; position: relative; z-index: 1; }
     .related-nav a { display: block; padding: 20px; border: 1px solid var(--border); text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s; }
     .related-nav a:hover { color: var(--text); border-color: var(--accent); background: var(--accent-dim); }
     .related-nav a.active { color: var(--accent); border-color: var(--accent); }
