@@ -53,7 +53,7 @@
   </ul>
 </nav>
 
-<section style="position:relative; overflow:hidden; height:100vh;">
+<section style="position:relative; overflow:hidden; height:calc(100vh - var(--nav-h)); margin-top:var(--nav-h);">
 
   <!-- Vidéo -->
   <div style="position:absolute; inset:0; z-index:0; overflow:hidden;">
@@ -62,7 +62,7 @@
   </div>
 
   <!-- Contenu superposé -->
-  <div style="position:relative; z-index:2; height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding: calc(var(--nav-h) + 60px) 40px 80px;">
+ <div style="position:relative; z-index:2; height:calc(100vh - var(--nav-h)); display:flex; flex-direction:column; justify-content:flex-end; padding: 60px 40px 80px;">
     <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
       <div>
         <div class="proj-breadcrumb">
