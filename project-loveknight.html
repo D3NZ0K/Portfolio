@@ -10,10 +10,14 @@
   <link rel="stylesheet" href="project.css" />
   <style>
   .block-labeled-gallery {
-  grid-template-columns: repeat(5, 1fr);
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+}
+
+.block-labeled-gallery .labeled-item {
+  width: calc(20% - 2px);
 }
   .block-labeled-gallery .labeled-item .media-wrap {
     aspect-ratio: 1/1;
