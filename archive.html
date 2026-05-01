@@ -8,253 +8,175 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    .page-hero { padding: calc(var(--nav-h) + 80px) 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; border-bottom: 1px solid var(--border); }
+    .hero-left .eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .hero-left h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 600; line-height: 1.05; }
+    .hero-right { padding-bottom: 6px; }
+    .hero-right p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; border-left: 1px solid var(--border); padding-left: 28px; }
+    .archive-body { padding: 0 40px; }
+    .year-block { display: grid; grid-template-columns: 120px 1fr; gap: 0 40px; border-top: 1px solid var(--border); padding: 56px 0; }
+    .year-label { font-family: var(--font-display); font-size: 3.5rem; font-weight: 600; color: var(--border); line-height: 1; position: sticky; top: calc(var(--nav-h) + 24px); align-self: start; letter-spacing: -0.02em; transition: color 0.3s; }
+    .year-block:hover .year-label { color: var(--accent); }
+    .year-projects { display: flex; flex-direction: column; gap: 2px; }
+    .archive-row { display: grid; grid-template-columns: 140px 1fr auto; align-items: center; gap: 24px; padding: 18px 0; border-bottom: 1px solid transparent; cursor: pointer; position: relative; text-decoration: none; color: inherit; transition: border-color 0.3s; overflow: hidden; }
+    .archive-row:last-child { border-bottom: none; }
+    .archive-row::before { content: ''; position: absolute; inset: 0; background: var(--accent-dim); opacity: 0; transition: opacity 0.3s; }
+    .archive-row:hover::before { opacity: 1; }
+    .archive-thumb { width: 140px; height: 90px; overflow: hidden; flex-shrink: 0; position: relative; z-index: 1; }
+    .archive-thumb img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) saturate(0.6); transition: filter 0.4s, transform 0.5s var(--ease-out); }
+    .archive-row:hover .archive-thumb img { filter: brightness(0.9) saturate(0.8); transform: scale(1.06); }
+    .archive-info { position: relative; z-index: 1; min-width: 0; }
+    .archive-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+    .archive-tag { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 3px 8px; }
+    .archive-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .archive-desc { font-size: 0.8rem; color: var(--muted); margin-top: 5px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .archive-arrow { position: relative; z-index: 1; width: 32px; height: 32px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; opacity: 0; transform: translateX(-6px); transition: opacity 0.3s, transform 0.3s, border-color 0.3s; }
+    .archive-row:hover .archive-arrow { opacity: 1; transform: none; border-color: var(--accent); }
+    .archive-header { padding: 32px 40px 0; display: flex; align-items: center; justify-content: space-between; }
+    .archive-count { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+    .archive-count strong { color: var(--text); font-weight: 500; }
+    .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-btn { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 6px 14px; background: none; cursor: pointer; font-family: var(--font-body); transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .filter-btn.active, .filter-btn:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+    .archive-row[data-hidden="true"] { display: none; }
 
-    /* ===== HERO ===== */
-    .page-hero {
-      padding: calc(var(--nav-h) + 80px) 40px 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: end;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-left .eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .hero-left h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .hero-right {
-      padding-bottom: 6px;
-    }
-
-    .hero-right p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.8;
-      border-left: 1px solid var(--border);
-      padding-left: 28px;
-    }
-
-    /* ===== YEAR SECTIONS ===== */
-    .archive-body {
-      padding: 0 40px;
-    }
-
-    .year-block {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 0 40px;
-      border-top: 1px solid var(--border);
-      padding: 56px 0;
-    }
-
-    /* Sticky year label */
-    .year-label {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 600;
-      color: var(--border);
-      line-height: 1;
-      position: sticky;
-      top: calc(var(--nav-h) + 24px);
-      align-self: start;
-      letter-spacing: -0.02em;
-      transition: color 0.3s;
-    }
-
-    .year-block:hover .year-label {
-      color: var(--accent);
-    }
-
-    /* Projects for this year */
-    .year-projects {
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+      backdrop-filter: blur(8px);
+      padding: 40px;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(24px);
+      transition: transform 0.4s var(--ease-out);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal {
+      transform: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Modal media gallery */
+    .modal-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
 
-    /* ===== ARCHIVE ROW ===== */
-    .archive-row {
-      display: grid;
-      grid-template-columns: 140px 1fr auto;
-      align-items: center;
-      gap: 24px;
-      padding: 18px 0;
-      border-bottom: 1px solid transparent;
+    .modal-gallery-item {
+      aspect-ratio: 16/9;
+      overflow: hidden;
       cursor: pointer;
       position: relative;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.3s;
-      overflow: hidden;
     }
 
-    .archive-row:last-child {
-      border-bottom: none;
-    }
-
-    .archive-row::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--accent-dim);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .archive-row:hover::before { opacity: 1; }
-
-    /* Thumbnail */
-    .archive-thumb {
-      width: 140px;
-      height: 90px;
-      overflow: hidden;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .archive-thumb img {
+    .modal-gallery-item img,
+    .modal-gallery-item video {
       width: 100%; height: 100%;
       object-fit: cover;
-      filter: brightness(0.7) saturate(0.6);
-      transition: filter 0.4s, transform 0.5s var(--ease-out);
-    }
-
-    .archive-row:hover .archive-thumb img {
-      filter: brightness(0.9) saturate(0.8);
-      transform: scale(1.06);
-    }
-
-    /* Text */
-    .archive-info {
-      position: relative;
-      z-index: 1;
-      min-width: 0;
-    }
-
-    .archive-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .archive-tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 3px 8px;
-    }
-
-    .archive-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 600;
-      line-height: 1.15;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .archive-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 5px;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Arrow */
-    .archive-arrow {
-      position: relative;
-      z-index: 1;
-      width: 32px; height: 32px;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
-    }
-
-    .archive-row:hover .archive-arrow {
+      display: block;
       opacity: 1;
-      transform: none;
-      border-color: var(--accent);
+      transition: transform 0.4s;
     }
 
-    /* ===== COUNT + FILTER BAR ===== */
-    .archive-header {
-      padding: 32px 40px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .modal-gallery-item:hover img,
+    .modal-gallery-item:hover video { transform: scale(1.05); }
+
+    /* Featured first image */
+    .modal-gallery-item:first-child {
+      grid-column: span 3;
+      aspect-ratio: 16/7;
     }
 
-    .archive-count {
-      font-size: 0.72rem;
+    .modal-body {
+      padding: 32px 40px 40px;
+    }
+
+    .modal-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .modal-tag { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 3px 10px; }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .modal-meta {
+      font-size: 0.75rem;
       color: var(--muted);
-      letter-spacing: 0.1em;
-    }
-
-    .archive-count strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .filter-btns {
+      margin-bottom: 24px;
       display: flex;
-      gap: 8px;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .filter-btn {
-      font-size: 0.65rem;
+    .modal-meta span { display: flex; gap: 6px; align-items: center; }
+    .modal-meta strong { color: var(--text); }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
       border: 1px solid var(--border);
-      padding: 6px 14px;
-      background: none;
-      cursor: pointer;
-      font-family: var(--font-body);
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      padding: 10px 20px;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
     }
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      color: var(--bg);
-      background: var(--accent);
-      border-color: var(--accent);
-    }
+    .modal-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* hidden by filter */
-    .archive-row[data-hidden="true"] {
-      display: none;
-    }
-
-    @media (max-width: 900px) {
-      .page-hero {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: calc(var(--nav-h) + 40px) 20px 40px;
-      }
+    @media (max-width: 768px) {
+      .page-hero { grid-template-columns: 1fr; gap: 24px; padding: calc(var(--nav-h) + 40px) 20px 40px; }
       .hero-right p { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 20px; }
       .archive-body { padding: 0 20px; }
       .archive-header { padding: 28px 20px 0; flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -263,6 +185,10 @@
       .archive-row { grid-template-columns: 80px 1fr; gap: 14px; }
       .archive-thumb { width: 80px; height: 56px; }
       .archive-arrow { display: none; }
+      .modal-overlay { padding: 20px; }
+      .modal-gallery { grid-template-columns: 1fr; }
+      .modal-gallery-item:first-child { grid-column: span 1; }
+      .modal-body { padding: 24px 20px; }
     }
   </style>
 </head>
@@ -270,34 +196,29 @@
 
 <nav>
   <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
-  <button class="nav-burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="games.html">Games</a></li>
     <li><a href="art.html">Art</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <header class="page-hero">
   <div class="hero-left reveal">
     <p class="eyebrow">Everything, always</p>
     <h1>Archive</h1>
   </div>
   <div class="hero-right reveal">
-    <p>
-      Every project I've worked on — the good, the rough, and the experimental. This archive is a honest record of my progression as a Game Artist, from early attempts to more recent explorations.
-    </p>
+    <p>Every project I've worked on — the good, the rough, and the experimental. An honest record of my progression as a Game Artist.</p>
   </div>
 </header>
 
-<!-- FILTER + COUNT -->
 <div class="archive-header reveal">
-  <p class="archive-count"><strong id="visible-count">12</strong> projects</p>
+  <p class="archive-count"><strong id="visible-count">6</strong> projects</p>
   <div class="filter-btns">
     <button class="filter-btn active" data-filter="all">All</button>
     <button class="filter-btn" data-filter="3D">3D</button>
@@ -309,17 +230,6 @@
   </div>
 </div>
 
-<!-- ===== ARCHIVE BODY ===== -->
-<!--
-  ✏️ COMMENT AJOUTER UN PROJET :
-  Copie un <a class="archive-row"> et modifie :
-    data-tags   → catégories séparées par virgule (pour le filtre)
-    data-src    → image de ta vignette
-    .archive-title → nom du projet
-    .archive-desc  → courte description
-    href        → lien vers la page du projet (ou "#" si pas de page)
--->
-
 <main class="archive-body">
 
   <!-- ───── 2025 ───── -->
@@ -327,21 +237,35 @@
     <div class="year-label">2025</div>
     <div class="year-projects">
 
-      <a href="/Portfolio/project-kintsugi.html" class="archive-row" data-tags="2D,Game,VFX">
+      <a href="#" class="archive-row" data-tags="2D,Game,VFX"
+        data-modal="kintsugi-v1"
+        data-title="Kintsugi — First Version"
+        data-year="2024–2025" data-duration="17 Weeks" data-role="Animator & VFX Artist"
+        data-link="https://store.steampowered.com/app/4395600/Kintsugi/"
+        data-link-label="View on Steam"
+        data-desc="First iteration of the graduation project Kintsugi. Same 2D contemplative platformer universe, earlier production stage — this version shows the progression of animations, VFX and cinematics from the beginning of production to the final polished version."
+        data-tags-display="2D · Game · VFX">
         <div class="archive-thumb media-wrap loaded">
           <img src="/Portfolio/Anim_Slide.gif" alt="Kintsugi First Version" style="opacity:1;" class="loaded" />
         </div>
         <div class="archive-info">
-          <div class="archive-tags"><span class="archive-tag">2D</span><span class="archive-tag">Game</span><span class="archive-tag">VFX</span></div>
+          <div class="archive-tags"><span class="archive-tag">2D</span><span class="archive-tag">VFX</span><span class="archive-tag">Game</span></div>
           <h2 class="archive-title">Kintsugi — First Version</h2>
-          <p class="archive-desc">First iteration of the graduation project. Same universe, earlier production stage — shows the full progression of the project from 2024 to 2025.</p>
+          <p class="archive-desc">First iteration of the graduation project — shows the full progression from early 2024 to final 2025 build.</p>
         </div>
         <div class="archive-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></div>
       </a>
 
-      <a href="https://nic0intheradio.itch.io/the-mystery-bath-tub" target="_blank" class="archive-row" data-tags="3D,Game">
+      <a href="#" class="archive-row" data-tags="3D,Game,Game Jam"
+        data-modal="mystery-bath"
+        data-title="The Mystery Bath Tub"
+        data-year="2025" data-duration="5 Days" data-role="3D Modeler"
+        data-link="https://nic0intheradio.itch.io/the-mystery-bath-tub"
+        data-link-label="View on Itch.io"
+        data-desc="Gamejam 2025 — 5 days. I modeled the bathtub, the rubber duck and the Baby Shark for this quirky mystery game."
+        data-tags-display="3D · Game Jam">
         <div class="archive-thumb media-wrap">
-          <img data-src="https://img.itch.zone/aW1nLzE5OTM4MDkwLnBuZw==/original/placeholder.png" alt="The Mystery Bath Tub" />
+          <img data-src="https://placehold.co/280x180/141414/333?text=Mystery+Bath+Tub" alt="Mystery Bath Tub" />
         </div>
         <div class="archive-info">
           <div class="archive-tags"><span class="archive-tag">3D</span><span class="archive-tag">Game Jam</span></div>
@@ -359,19 +283,33 @@
     <div class="year-label">2024</div>
     <div class="year-projects">
 
-      <a href="https://fantin-dahmani.itch.io/forlorn" target="_blank" class="archive-row" data-tags="3D,Game,VR">
+      <a href="#" class="archive-row" data-tags="3D,Game,VR"
+        data-modal="forlorn"
+        data-title="Forlorn"
+        data-year="2024" data-duration="2 Weeks" data-role="3D Modeler & Texture Artist"
+        data-link="https://fantin-dahmani.itch.io/forlorn"
+        data-link-label="View on Itch.io"
+        data-desc="Student VR project — 2 weeks. A horror driving experience set in a forest at night. I modeled and textured the car chassis, the radio, the road and the trees to create an immersive VR environment."
+        data-tags-display="3D · VR · Game">
         <div class="archive-thumb media-wrap">
           <img data-src="https://img.itch.zone/aW1nLzE4OTYwMDY0LnBuZw==/347x500/nudaAH.png" alt="Forlorn" />
         </div>
         <div class="archive-info">
           <div class="archive-tags"><span class="archive-tag">3D</span><span class="archive-tag">VR</span><span class="archive-tag">Game</span></div>
           <h2 class="archive-title">Forlorn</h2>
-          <p class="archive-desc">Jeu VR étudiant — 2 semaines. Modélisé et texturé le chassis de la voiture, la radio, la route et les arbres.</p>
+          <p class="archive-desc">Student VR project — 2 weeks. Modeled and textured the car chassis, radio, road and trees.</p>
         </div>
         <div class="archive-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></div>
       </a>
 
-      <a href="https://hugomonmousseau.itch.io/controlplague" target="_blank" class="archive-row" data-tags="2D,Game">
+      <a href="#" class="archive-row" data-tags="2D,Game,Game Jam"
+        data-modal="controlplague"
+        data-title="Control Plague"
+        data-year="2024" data-duration="5 Days" data-role="2D Artist"
+        data-link="https://hugomonmousseau.itch.io/controlplague"
+        data-link-label="View on Itch.io"
+        data-desc="Gamejam 2024 — 5 days. A point & click puzzle game where you play as a medieval doctor mixing ingredients to cure plague patients. I drew all the wizard's magic ingredients for the potion crafting system."
+        data-tags-display="2D · Game Jam">
         <div class="archive-thumb media-wrap">
           <img data-src="https://img.itch.zone/aW1nLzE3NzU2NjE5LnBuZw==/original/HnxhAG.png" alt="Control Plague" />
         </div>
@@ -391,14 +329,21 @@
     <div class="year-label">2023</div>
     <div class="year-projects">
 
-      <a href="https://tos927.itch.io/godfather-team39" target="_blank" class="archive-row" data-tags="2D,Game">
+      <a href="#" class="archive-row" data-tags="2D,Game,Game Jam"
+        data-modal="central"
+        data-title="C.E.N.T.R.A.L"
+        data-year="2023" data-duration="5 Days" data-role="2D Artist"
+        data-link="https://tos927.itch.io/godfather-team39"
+        data-link-label="View on Itch.io"
+        data-desc="Gamejam 2023 — 5 days. An assembly line rhythm game where you build robots with a special controller. I drew the robots and the cardboard box assets used throughout the production line."
+        data-tags-display="2D · Game Jam">
         <div class="archive-thumb media-wrap">
           <img data-src="https://img.itch.zone/aW1nLzEzMzQ4NDU0LnBuZw==/original/tq0VeZ.png" alt="C.E.N.T.R.A.L" />
         </div>
         <div class="archive-info">
           <div class="archive-tags"><span class="archive-tag">2D</span><span class="archive-tag">Game Jam</span></div>
           <h2 class="archive-title">C.E.N.T.R.A.L</h2>
-          <p class="archive-desc">Gamejam 2023 — 5 days. Drew the robots and the cardboard box assets for the assembly line game.</p>
+          <p class="archive-desc">Gamejam 2023 — 5 days. Drew the robots and the cardboard box for this assembly line rhythm game.</p>
         </div>
         <div class="archive-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></div>
       </a>
@@ -411,9 +356,16 @@
     <div class="year-label">2022</div>
     <div class="year-projects">
 
-      <a href="https://titosh.itch.io/starline" target="_blank" class="archive-row" data-tags="2D,Game">
+      <a href="#" class="archive-row" data-tags="2D,Game,Game Jam"
+        data-modal="starline"
+        data-title="Starline"
+        data-year="2022" data-duration="5 Days" data-role="2D Artist"
+        data-link="https://titosh.itch.io/starline"
+        data-link-label="View on Itch.io"
+        data-desc="Gamejam 2022 — 5 days. A retro Vectrex-inspired space shooter where you draw walls to defend your ship. I drew the spaceship designs used throughout the game."
+        data-tags-display="2D · Game Jam">
         <div class="archive-thumb media-wrap">
-          <img data-src="https://img.itch.zone/aW1nLzk5OTA4MzEucG5n/original/dOKcRT.png" alt="Starline" />
+          <img data-src="https://img.itch.zone/aW1nLzk1OTA4MzEucG5n/original/dOKcRT.png" alt="Starline" />
         </div>
         <div class="archive-info">
           <div class="archive-tags"><span class="archive-tag">2D</span><span class="archive-tag">Game Jam</span></div>
@@ -428,12 +380,32 @@
 
 </main>
 
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+
+    <!-- Gallery -->
+    <div class="modal-gallery" id="modal-gallery"></div>
+
+    <!-- Body -->
+    <div class="modal-body">
+      <div class="modal-tags" id="modal-tags"></div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <p class="modal-desc" id="modal-desc"></p>
+      <a href="#" class="modal-link" id="modal-link" target="_blank"></a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>© 2025 Enzo de Corte</p>
   <div class="footer-links">
-    <a href="games.html">Projects</a>
-    <a href="art.html">Art</a>
-    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://d3nz0k.artstation.com" target="_blank" aria-label="ArtStation"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
+    <a href="https://github.com/D3NZ0K" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+    <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
   </div>
 </footer>
 
@@ -442,8 +414,8 @@
 <script>
   // ===== FILTER =====
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const rows       = document.querySelectorAll('.archive-row');
-  const countEl   = document.getElementById('visible-count');
+  const rows = document.querySelectorAll('.archive-row');
+  const countEl = document.getElementById('visible-count');
 
   function applyFilter(filter) {
     let count = 0;
@@ -454,11 +426,8 @@
       if (show) count++;
     });
     countEl.textContent = count;
-
-    // Hide empty year blocks
     document.querySelectorAll('.year-block').forEach(block => {
-      const visible = [...block.querySelectorAll('.archive-row')]
-        .some(r => r.getAttribute('data-hidden') !== 'true');
+      const visible = [...block.querySelectorAll('.archive-row')].some(r => r.getAttribute('data-hidden') !== 'true');
       block.style.display = visible ? '' : 'none';
     });
   }
@@ -470,6 +439,139 @@
       applyFilter(btn.dataset.filter);
     });
   });
+
+  // ===== MODAL DATA =====
+  const modalData = {
+    'kintsugi-v1': {
+      images: [
+        '/Portfolio/Anim_Slide.gif',
+        '/Portfolio/Spine_Wind.gif',
+        '/Portfolio/Anim_Walk.gif',
+        '/Portfolio/Anim_Super_Jump.gif',
+        '/Portfolio/Anim_Hard_Walk.gif',
+      ],
+      video: null // remplace par '/Portfolio/ta-video.mp4' quand tu l'as
+    },
+    'mystery-bath': {
+      images: [
+        'https://placehold.co/900x400/141414/333?text=Mystery+Bath+Tub+01',
+        'https://placehold.co/400x300/141414/333?text=Mystery+Bath+Tub+02',
+        'https://placehold.co/400x300/141414/333?text=Mystery+Bath+Tub+03',
+      ],
+      video: null
+    },
+    'forlorn': {
+      images: [
+        'https://img.itch.zone/aW1nLzE4OTYwMDY0LnBuZw==/original/TM%2BzKb.png',
+        'https://placehold.co/400x300/141414/333?text=Forlorn+02',
+        'https://placehold.co/400x300/141414/333?text=Forlorn+03',
+      ],
+      video: null
+    },
+    'controlplague': {
+      images: [
+        'https://img.itch.zone/aW1nLzE3NzU2NjE5LnBuZw==/original/HnxhAG.png',
+        'https://img.itch.zone/aW1nLzE3NzQ1NTU2LnBuZw==/original/g5Lk4y.png',
+        'https://img.itch.zone/aW1nLzE3NzQ1NTU3LnBuZw==/original/fl%2BQ6y.png',
+      ],
+      video: null
+    },
+    'central': {
+      images: [
+        'https://img.itch.zone/aW1nLzEzMzQ4NDU0LnBuZw==/original/tq0VeZ.png',
+        'https://img.itch.zone/aW1hZ2UvMjI0OTUxMS8xMzM0ODEzMi5wbmc=/original/K8ci9C.png',
+        'https://img.itch.zone/aW1hZ2UvMjI0OTUxMS8xMzM0OTUzNi5wbmc=/original/HTAJUm.png',
+      ],
+      video: null
+    },
+    'starline': {
+      images: [
+        'https://img.itch.zone/aW1nLzk1OTA4MzEucG5n/original/dOKcRT.png',
+        'https://img.itch.zone/aW1nLzk1OTY5NjQucG5n/original/eZOXEu.png',
+        'https://placehold.co/400x300/141414/333?text=Starline+03',
+      ],
+      video: null
+    }
+  };
+
+  // ===== MODAL OPEN/CLOSE =====
+  const overlay = document.getElementById('modal-overlay');
+  const modalClose = document.getElementById('modal-close');
+
+  rows.forEach(row => {
+    row.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = row.dataset.modal;
+      if (!id) return;
+
+      const data = modalData[id];
+      const title = row.dataset.title;
+      const year = row.dataset.year;
+      const duration = row.dataset.duration;
+      const role = row.dataset.role;
+      const desc = row.dataset.desc;
+      const link = row.dataset.link;
+      const linkLabel = row.dataset.linkLabel;
+      const tagsDisplay = row.dataset.tagsDisplay;
+
+      // Gallery
+      const gallery = document.getElementById('modal-gallery');
+      gallery.innerHTML = '';
+
+      if (data.video) {
+        const item = document.createElement('div');
+        item.className = 'modal-gallery-item';
+        item.innerHTML = `<video src="${data.video}" autoplay loop muted playsinline style="opacity:1;"></video>`;
+        gallery.appendChild(item);
+      } else if (data.images[0]) {
+        const item = document.createElement('div');
+        item.className = 'modal-gallery-item';
+        item.innerHTML = `<img src="${data.images[0]}" alt="${title}" style="opacity:1;" />`;
+        gallery.appendChild(item);
+      }
+
+      data.images.slice(data.video ? 0 : 1).forEach(src => {
+        const item = document.createElement('div');
+        item.className = 'modal-gallery-item';
+        item.innerHTML = `<img src="${src}" alt="${title}" style="opacity:1;" />`;
+        gallery.appendChild(item);
+      });
+
+      // Tags
+      document.getElementById('modal-tags').innerHTML = tagsDisplay.split('·').map(t => `<span class="modal-tag">${t.trim()}</span>`).join('');
+
+      // Title
+      document.getElementById('modal-title').textContent = title;
+
+      // Meta
+      document.getElementById('modal-meta').innerHTML = `
+        <span><strong>Year</strong> ${year}</span>
+        <span><strong>Duration</strong> ${duration}</span>
+        <span><strong>Role</strong> ${role}</span>
+      `;
+
+      // Desc
+      document.getElementById('modal-desc').textContent = desc;
+
+      // Link
+      const linkEl = document.getElementById('modal-link');
+      linkEl.href = link;
+      linkEl.textContent = linkLabel + ' ↗';
+
+      // Open
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 </script>
 </body>
 </html>
