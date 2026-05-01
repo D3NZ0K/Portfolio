@@ -110,4 +110,41 @@ if (heroVideo) {
     heroVideo.muted = true;
     heroVideo.play();
   });
+
+  // ===== LIGHTBOX =====
+const lightboxOverlay = document.createElement('div');
+lightboxOverlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s; cursor:zoom-out; padding:40px;';
+document.body.appendChild(lightboxOverlay);
+
+const lightboxImg = document.createElement('img');
+lightboxImg.style.cssText = 'max-width:100%; max-height:100%; object-fit:contain; transform:scale(0.95); transition:transform 0.3s var(--ease-out);';
+lightboxOverlay.appendChild(lightboxImg);
+
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightboxOverlay.style.opacity = '1';
+  lightboxOverlay.style.pointerEvents = 'all';
+  lightboxImg.style.transform = 'scale(1)';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightboxOverlay.style.opacity = '0';
+  lightboxOverlay.style.pointerEvents = 'none';
+  lightboxImg.style.transform = 'scale(0.95)';
+  document.body.style.overflow = '';
+}
+
+// Clique sur toutes les images (sauf card-still, card-gif, nav, hero)
+document.querySelectorAll('.media-wrap img, .labeled-item img, .gallery-item img, .block-media-2col img, .block-media-3col img, .block-media-full img, .block-side img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const src = img.src || img.dataset.src;
+    if (src) openLightbox(src);
+  });
+});
+
+lightboxOverlay.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 }
