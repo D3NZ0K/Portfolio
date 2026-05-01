@@ -35,7 +35,7 @@ const imgObserver = new IntersectionObserver((entries, obs) => {
 
 lazyImages.forEach(img => imgObserver.observe(img));
 
-// ===== LAZY LOAD VIDEOS (GIFs remplacés par vidéos) =====
+// ===== LAZY LOAD VIDEOS =====
 const lazyVideos = document.querySelectorAll('video[data-src]');
 const vidObserver = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
@@ -65,13 +65,11 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => revealObs.observe(el));
 
-// GIF/image on hover for project cards
+// ===== GIF/image on hover for project cards =====
 document.querySelectorAll('.project-card').forEach(card => {
   const gif = card.querySelector('.card-video');
   const still = card.querySelector('.card-still');
   if (!gif || !still) return;
-  
-  // État initial
   still.style.opacity = '1';
   still.style.zIndex = '2';
   gif.style.opacity = '0';
@@ -81,7 +79,6 @@ document.querySelectorAll('.project-card').forEach(card => {
   gif.style.width = '100%';
   gif.style.height = '100%';
   gif.style.objectFit = 'cover';
-  
   card.addEventListener('mouseenter', () => {
     gif.style.opacity = '1';
     gif.style.zIndex = '3';
@@ -93,7 +90,8 @@ document.querySelectorAll('.project-card').forEach(card => {
     still.style.opacity = '1';
   });
 });
-// GIF on hover
+
+// ===== GIF on hover =====
 document.querySelectorAll('.hover-gif').forEach(img => {
   const gif = img.dataset.src;
   const still = img.dataset.static;
@@ -103,21 +101,23 @@ document.querySelectorAll('.hover-gif').forEach(img => {
   img.addEventListener('mouseenter', () => img.src = gif);
   img.addEventListener('mouseleave', () => img.src = still);
 });
-// Force hero video autoplay
+
+// ===== Force hero video autoplay =====
 const heroVideo = document.getElementById('hero-video');
 if (heroVideo) {
   heroVideo.play().catch(() => {
     heroVideo.muted = true;
     heroVideo.play();
   });
+}
 
-  // ===== LIGHTBOX =====
+// ===== LIGHTBOX =====
 const lightboxOverlay = document.createElement('div');
 lightboxOverlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s; cursor:zoom-out; padding:40px;';
 document.body.appendChild(lightboxOverlay);
 
 const lightboxImg = document.createElement('img');
-lightboxImg.style.cssText = 'max-width:100%; max-height:100%; object-fit:contain; transform:scale(0.95); transition:transform 0.3s var(--ease-out);';
+lightboxImg.style.cssText = 'max-width:100%; max-height:90vh; object-fit:contain; transform:scale(0.95); transition:transform 0.3s;';
 lightboxOverlay.appendChild(lightboxImg);
 
 function openLightbox(src) {
@@ -135,16 +135,19 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-// Clique sur toutes les images (sauf card-still, card-gif, nav, hero)
-document.querySelectorAll('.media-wrap img, .labeled-item img, .gallery-item img, .block-media-2col img, .block-media-3col img, .block-media-full img, .block-side img').forEach(img => {
-  img.style.cursor = 'zoom-in';
-  img.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const src = img.src || img.dataset.src;
-    if (src) openLightbox(src);
-  });
-});
-
 lightboxOverlay.addEventListener('click', closeLightbox);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-}
+
+document.addEventListener('click', (e) => {
+  const img = e.target.closest('img');
+  if (!img) return;
+  if (img.closest('nav')) return;
+  if (img.classList.contains('card-still')) return;
+  if (img.classList.contains('card-gif')) return;
+  if (img.closest('.hero-bg')) return;
+  if (img.closest('.proj-hero-media')) return;
+  if (img.closest('.archive-thumb')) return;
+  if (img.closest('.related-card')) return;
+  const src = img.src;
+  if (src && !src.includes('placehold.co')) openLightbox(src);
+});
