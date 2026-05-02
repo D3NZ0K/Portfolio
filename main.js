@@ -119,9 +119,16 @@ lbImg.style.cssText = 'max-width:100%;max-height:90vh;object-fit:contain;';
 lb.appendChild(lbImg);
 document.body.appendChild(lb);
 
-lb.addEventListener('click', () => {
+lb.addEventListener('click', (e) => {
   lb.style.display = 'none';
   document.body.style.overflow = '';
+  e.stopPropagation();
+});
+
+lbImg.addEventListener('click', (e) => {
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
+  e.stopPropagation();
 });
 
 document.addEventListener('click', (e) => {
