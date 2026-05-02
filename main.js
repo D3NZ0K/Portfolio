@@ -158,4 +158,3 @@ document.addEventListener('click', (e) => {
   if (img.closest('.related-card')) return;
   const src = img.src;
   if (src && !src.includes('placehold.co')) openLightbox(src);
-});
