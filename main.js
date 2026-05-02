@@ -159,5 +159,3 @@ document.addEventListener('click', (e) => {
   const src = img.src;
   if (src && !src.includes('placehold.co')) openLightbox(src);
 });
-
-});
