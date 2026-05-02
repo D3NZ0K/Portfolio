@@ -108,5 +108,33 @@ if (heroVideo) {
   heroVideo.play().catch(() => {
     heroVideo.muted = true;
     heroVideo.play();
-  });
+});
 }
+
+// ===== LIGHTBOX =====
+const lb = document.createElement('div');
+lb.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:40px;cursor:zoom-out;';
+const lbImg = document.createElement('img');
+lbImg.style.cssText = 'max-width:100%;max-height:90vh;object-fit:contain;';
+lb.appendChild(lbImg);
+document.body.appendChild(lb);
+
+lb.addEventListener('click', () => {
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
+});
+
+document.addEventListener('click', (e) => {
+  if (lb.style.display === 'flex') return;
+  const img = e.target.closest('img');
+  if (!img) return;
+  if (img.closest('nav')) return;
+  if (img.classList.contains('card-still')) return;
+  if (img.classList.contains('card-gif')) return;
+  if (img.closest('.hero-bg')) return;
+  if (img.closest('.proj-hero-media')) return;
+  if (!img.src || img.src.includes('placehold.co')) return;
+  lbImg.src = img.src;
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+});
