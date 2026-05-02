@@ -117,13 +117,10 @@ lightboxOverlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,
 document.body.appendChild(lightboxOverlay);
 
 const lightboxImg = document.createElement('img');
-lightboxImg.style.cssText = 'max-width:100%; max-height:90vh; object-fit:contain; transform:scale(0.95); transition:transform 0.3s;';
+lightboxImg.style.cssText = 'max-width:100%; max-height:90vh; object-fit:contain; transform:scale(0.95); transition:transform 0.3s; cursor:zoom-out;';
 lightboxOverlay.appendChild(lightboxImg);
-const lightboxClose = document.createElement('button');
-lightboxClose.textContent = '✕';
-lightboxClose.style.cssText = 'position:fixed; top:24px; right:24px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:white; width:44px; height:44px; font-size:1.2rem; cursor:pointer; z-index:2001;';
-lightboxOverlay.appendChild(lightboxClose);
-lightboxClose.addEventListener('click', closeLightbox);
+
+let lightboxOpen = false;
 
 function openLightbox(src) {
   lightboxImg.src = src;
@@ -131,6 +128,7 @@ function openLightbox(src) {
   lightboxOverlay.style.pointerEvents = 'all';
   lightboxImg.style.transform = 'scale(1)';
   document.body.style.overflow = 'hidden';
+  lightboxOpen = true;
 }
 
 function closeLightbox() {
@@ -138,14 +136,16 @@ function closeLightbox() {
   lightboxOverlay.style.pointerEvents = 'none';
   lightboxImg.style.transform = 'scale(0.95)';
   document.body.style.overflow = '';
+  lightboxOpen = false;
 }
 
-lightboxOverlay.addEventListener('click', (e) => {
-  if (e.target === lightboxOverlay || e.target === lightboxImg) closeLightbox();
-});
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
 document.addEventListener('click', (e) => {
+  if (lightboxOpen) {
+    closeLightbox();
+    return;
+  }
   const img = e.target.closest('img');
   if (!img) return;
   if (img.closest('nav')) return;
@@ -157,4 +157,5 @@ document.addEventListener('click', (e) => {
   if (img.closest('.related-card')) return;
   const src = img.src;
   if (src && !src.includes('placehold.co')) openLightbox(src);
+});
 });
