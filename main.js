@@ -135,7 +135,9 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-lightboxOverlay.addEventListener('click', closeLightbox);
+lightboxOverlay.addEventListener('click', (e) => {
+  if (e.target === lightboxOverlay || e.target === lightboxImg) closeLightbox();
+});
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
 document.addEventListener('click', (e) => {
