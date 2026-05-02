@@ -119,6 +119,11 @@ document.body.appendChild(lightboxOverlay);
 const lightboxImg = document.createElement('img');
 lightboxImg.style.cssText = 'max-width:100%; max-height:90vh; object-fit:contain; transform:scale(0.95); transition:transform 0.3s;';
 lightboxOverlay.appendChild(lightboxImg);
+const lightboxClose = document.createElement('button');
+lightboxClose.textContent = '✕';
+lightboxClose.style.cssText = 'position:fixed; top:24px; right:24px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:white; width:44px; height:44px; font-size:1.2rem; cursor:pointer; z-index:2001;';
+lightboxOverlay.appendChild(lightboxClose);
+lightboxClose.addEventListener('click', closeLightbox);
 
 function openLightbox(src) {
   lightboxImg.src = src;
