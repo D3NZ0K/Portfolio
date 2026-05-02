@@ -143,6 +143,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLight
 
 document.addEventListener('click', (e) => {
   if (lightboxOpen) {
+    e.stopPropagation();
     closeLightbox();
     return;
   }
@@ -158,4 +159,5 @@ document.addEventListener('click', (e) => {
   const src = img.src;
   if (src && !src.includes('placehold.co')) openLightbox(src);
 });
+
 });
