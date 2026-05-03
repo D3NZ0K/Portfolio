@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.youtube.com;">
   <title>Enzo de Corte — The Last Night to Hunt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
+  <style>
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,27 +27,21 @@
     <li><a href="art.html">Art</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section style="position:relative; overflow:hidden; height:calc(100vh - var(--nav-h)); margin-top:var(--nav-h);">
-
-  <!-- Vidéo YouTube -->
   <div style="position:absolute; inset:0; z-index:0; overflow:hidden;">
     <iframe src="https://www.youtube.com/embed/tMzAZg0R6hQ?autoplay=1&mute=1&loop=1&playlist=tMzAZg0R6hQ&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&vq=hd1080" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.75); pointer-events:none;"></iframe>
     <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 40%); z-index:1; pointer-events:none;"></div>
     <div style="position:absolute; inset:0; z-index:1;"></div>
   </div>
-
-  <!-- Contenu superposé -->
   <div style="position:relative; z-index:2; height:calc(100vh - var(--nav-h)); display:flex; flex-direction:column; justify-content:flex-end; padding: 60px 40px 80px;">
     <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
       <div>
-        <div class="proj-breadcrumb">
-          <a href="games.html">Games</a>
-          <span>›</span>
-          <span>The Last Night to Hunt</span>
-        </div>
+        <div class="proj-breadcrumb"><a href="games.html">Games</a><span>›</span><span>The Last Night to Hunt</span></div>
         <h1 class="proj-title">First Project —<br>3D Modeler & Animator</h1>
         <p class="proj-tagline">You play as a werewolf out for revenge. Your clan has been decimated by the warlord of the royal army — and you only want one thing: to exterminate it at all costs.</p>
         <a href="https://d3nz0k.itch.io/the-last-night-to-hunt" target="_blank" class="proj-cta-link">
@@ -55,15 +56,10 @@
         <div class="proj-meta-item"><label>Type</label><span>First School Project</span></div>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
     <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation: bounce 2s infinite;">
       <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Scroll</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
-
   </div>
 </section>
 
@@ -71,96 +67,56 @@
 
 <div class="proj-content">
 
-  <!-- Intro screenshots -->
+  <!-- Context -->
   <div class="block-text reveal">
     <p class="block-label">Context</p>
     <h2 class="block-heading">A Werewolf's Revenge</h2>
     <div class="block-body">
-      <p>The Last Night to Hunt is a project realized in a school setting over a few months. During the day, you are in human form and must investigate to discover different quests to help you in your final task of assassination. Be careful to remain discreet — although you are dangerous in wolf form, you remain vulnerable during the day.</p>
-      <p>At night, you turn into a werewolf. You will have two different ways to reach your target. The actions you take during the day will play a crucial role in your success and in the way you approach your target.</p>
+      <p>The Last Night to Hunt is a project realized in a school setting over one month. During the day, you are in human form and must investigate to discover different quests. Be careful to remain discreet — although you are dangerous in wolf form, you remain vulnerable during the day.</p>
+      <p>At night, you turn into a werewolf. You will have two different ways to reach your target. The actions you take during the day will play a crucial role in your success.</p>
     </div>
   </div>
 
-  <div class="block-media-3col reveal">
-    <div class="media-wrap"><img src="/Portfolio/armswerewolf.png" alt="Screenshot 01" /></div>
-    <div class="media-wrap"><img src="/Portfolio/armswerewolf2.png" alt="Screenshot 02" /></div>
-    <div class="media-wrap"><img src="/Portfolio/armswerewolf3.png" alt="Screenshot 03" /></div>
-  </div>
-
   <!-- Animations -->
-  <div class="block-text reveal">
+  <div class="block-text reveal" style="margin-bottom:24px;">
     <p class="block-label">Character Animation</p>
-    <h2 class="block-heading">Character Animations</h2>
+    <h2 class="block-heading">Werewolf Animations</h2>
     <div class="block-body">
       <p>I animated the full character state machine — covering all movement and combat states needed to bring the werewolf protagonist to life.</p>
     </div>
   </div>
 
   <div class="block-labeled-gallery reveal">
-    <figure class="labeled-item"><div class="media-wrap"><video src="/Portfolio/Trailer_Love_Knight.mp4" alt="Idle" /></div><figcaption>Animation_idle</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Animation_idle_2" alt="Idle 2" /></div><figcaption>Animation_idle_2</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Animation_Walk" alt="Walk" /></div><figcaption>Animation_Walk</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Animation_Run" alt="Run" /></div><figcaption>Animation_Run</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Animation_Jump" alt="Jump" /></div><figcaption>Animation_Jump</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Animation_Attack" alt="Attack" /></div><figcaption>Animation_Attack</figcaption></figure>
-  </div>
-
-  <div class="block-media-2col reveal">
-    <div class="media-wrap"><img data-src="https://placehold.co/700x525/141414/333?text=Character+Day+Form" alt="Day form" /></div>
-    <div class="media-wrap"><img data-src="https://placehold.co/700x525/141414/333?text=Character+Wolf+Form" alt="Wolf form" /></div>
-  </div>
-
-  <!-- 3D Meshes -->
-  <div class="block-text reveal">
-    <p class="block-label">3D Modeling</p>
-    <h2 class="block-heading">Other 3D Meshes</h2>
-    <div class="block-body">
-      <p>Alongside the character, I modeled a range of environment and prop assets to populate the world — from architectural elements to smaller interactive objects.</p>
-    </div>
-  </div>
-
-  <div class="block-labeled-gallery reveal">
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+01" alt="Mesh 01" /></div><figcaption>Mesh_01</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+02" alt="Mesh 02" /></div><figcaption>Mesh_02</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+03" alt="Mesh 03" /></div><figcaption>Mesh_03</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+04" alt="Mesh 04" /></div><figcaption>Mesh_04</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+05" alt="Mesh 05" /></div><figcaption>Mesh_05</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+06" alt="Mesh 06" /></div><figcaption>Mesh_06</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+07" alt="Mesh 07" /></div><figcaption>Mesh_07</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+08" alt="Mesh 08" /></div><figcaption>Mesh_08</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Mesh+09" alt="Mesh 09" /></div><figcaption>Mesh_09</figcaption></figure>
-  </div>
-
-</div>
-
-<section class="related-section">
-  <p class="related-label">You may also like</p>
-  <div class="related-grid">
-    <a href="project-kourou.html" class="related-card reveal"><div class="media-wrap"><img data-src="https://placehold.co/600x450/141414/333?text=Kourou+Space+Coop" alt="Kourou" /></div><div class="related-info"><h4>Kourou Space Coop</h4><p>Internship · 2 Months</p></div></a>
-    <a href="project-kaiju.html" class="related-card reveal" style="transition-delay:0.1s"><div class="media-wrap"><img data-src="https://placehold.co/600x450/141414/333?text=Super+Kaiju" alt="Super Kaiju" /></div><div class="related-info"><h4>Super Kaiju Simulator</h4><p>ALT+CTRL Project · 2 Weeks</p></div></a>
-    <a href="project-loveknight.html" class="related-card reveal" style="transition-delay:0.2s"><div class="media-wrap"><img data-src="https://placehold.co/600x450/141414/333?text=Love+Knight" alt="Love Knight" /></div><div class="related-info"><h4>Love Knight</h4><p>Mobile Game · 1 Month</p></div></a>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 Enzo de Corte</p>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" aria-label="LinkedIn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="https://d3nz0k.artstation.com" target="_blank" aria-label="ArtStation">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg>
-    </a>
-    <a href="https://github.com/D3NZ0K" target="_blank" aria-label="GitHub">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-    </a>
-    <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg>
-    </a>
-  </div>
-</footer>
-
-<button class="back-top" aria-label="Back to top">↑</button>
-<script src="main.js"></script>
-</body>
-</html>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/WalkWerewolf.mp4" autoplay loop muted playsinline style="opacity:1; width:100%; height:100%; object-fit:cover;"></video>
+      </div>
+      <figcaption>Walk_Animation</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/RunWerewolf.mp4" autoplay loop muted playsinline style="opacity:1; width:100%; height:100%; object-fit:cover;"></video>
+      </div>
+      <figcaption>Run_Animation</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/IdleWerewolf.mp4" autoplay loop muted playsinline style="opacity:1; width:100%; height:100%; object-fit:cover;"></video>
+      </div>
+      <figcaption>Idle_Animation</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/Idle2Werewolf.mp4" autoplay loop muted playsinline style="opacity:1; width:100%; height:100%; object-fit:cover;"></video>
+      </div>
+      <figcaption>Idle2_Animation</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/JumpWerewolf.mp4" autoplay loop muted playsinline style="opacity:1; width:100%; height:100%; object-fit:cover;"></video>
+      </div>
+      <figcaption>Jump_Animation</figcaption>
+    </figure>
+    <figure class="labeled-item">
+      <div class="media-wrap loaded" style="aspect-ratio:16/9;">
+        <video src="/Portfolio/AttackWe
