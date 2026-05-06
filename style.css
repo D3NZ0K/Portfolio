@@ -271,3 +271,8 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
   height: 100%;
   object-fit: cover;
 }
+
+/* FIX définitif pour la galerie volley */
+.volley-gallery .media-wrap img {
+  opacity: 1 !important;
+}
