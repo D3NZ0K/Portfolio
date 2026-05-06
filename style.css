@@ -253,15 +253,20 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
   cursor: zoom-in;
 }
 
-.about-content > div:last-child .media-wrap {
-  width: 220px;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  display: inline-block;
-  margin-right: 16px;
+.volley-gallery {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
 }
 
-.about-content > div:last-child .media-wrap img {
+.volley-gallery .media-wrap {
+  width: 220px; /* 👈 taille des images */
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.volley-gallery .media-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
