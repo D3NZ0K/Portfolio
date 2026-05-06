@@ -252,3 +252,7 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
 .media-wrap img, .labeled-item img, .gallery-item img {
   cursor: zoom-in;
 }
+
+.about-content .media-wrap {
+  max-width: 220px;
+}
