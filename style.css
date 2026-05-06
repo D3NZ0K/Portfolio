@@ -244,3 +244,11 @@ footer p {
   .nav-burger { display: flex; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
 }
+/* ===== CURSEURS ===== */
+a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .nav-links a, .back-top {
+  cursor: pointer;
+}
+
+.media-wrap img, .labeled-item img, .gallery-item img {
+  cursor: zoom-in;
+}
