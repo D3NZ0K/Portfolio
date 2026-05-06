@@ -262,7 +262,7 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
 
 .volley-gallery .media-wrap {
   width: 220px; /* 👈 taille des images */
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
