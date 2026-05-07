@@ -292,8 +292,13 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
   justify-content:center;
 }
 
-.location-logos img{
-  width:65%;
-  height:65%;
+/* logos plus petits */
+.location-logos .media-wrap img{
+  width:140px !important;
+  height:140px !important;
+
+  max-width:140px !important;
+  max-height:140px !important;
+
   object-fit:contain;
 }
