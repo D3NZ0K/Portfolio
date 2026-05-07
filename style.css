@@ -275,3 +275,29 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
 .volley-gallery .media-wrap img {
   opacity: 1 !important;
 }
+
+/* ===== Logos des lieux uniquement ===== */
+
+.block-labeled-gallery{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+
+/* cible uniquement les logos de cette section */
+.block-labeled-gallery .labeled-item .media-wrap{
+  aspect-ratio:1/1;      /* format carré */
+  width:100%;
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* réduit uniquement ces images */
+.block-labeled-gallery .labeled-item .media-wrap img{
+  width:65%;
+  height:65%;
+  object-fit:contain;    /* garde le ratio du logo */
+}
