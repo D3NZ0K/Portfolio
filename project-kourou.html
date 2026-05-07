@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src https://www.youtube.com;">
   <title>Enzo de Corte — Kourou Space Coop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
+  <style>
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,25 +27,38 @@
     <li><a href="art.html">Art</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
 
-<section class="proj-hero">
-  <div class="proj-hero-media media-wrap">
-    <img data-src="https://placehold.co/1600x686/141414/333?text=Kourou+Space+Coop+Hero" alt="Kourou Space Coop" />
+<!-- HERO -->
+<section style="position:relative; overflow:hidden; height:calc(100vh - var(--nav-h)); margin-top:var(--nav-h);">
+  <div style="position:absolute; inset:0; z-index:0; overflow:hidden;">
+    <iframe src="https://www.youtube.com/embed/d5uxGtZ03lM?autoplay=1&mute=1&loop=1&playlist=d5uxGtZ03lM&controls=0&showinfo=0&rel=0&disablekb=1&modestbranding=1&vq=hd1080" frameborder="0" allow="autoplay" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100%; min-height:100%; filter:brightness(0.75); pointer-events:none;"></iframe>
+    <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 40%); z-index:1; pointer-events:none;"></div>
+    <div style="position:absolute; inset:0; z-index:1;"></div>
   </div>
-  <div class="proj-hero-info reveal">
-    <div>
-      <div class="proj-breadcrumb"><a href="games.html">Games</a><span>›</span><span>Kourou Space Coop</span></div>
-      <h1 class="proj-title">Internship —<br>3D Generalist</h1>
-      <p class="proj-tagline">A VR cooperative experience designed for the CNES, showcasing the key missions of Ariane 5 — built to coincide with the anticipated completion of Ariane 6.</p>
-      <a href="https://atsue.itch.io/kourou-space-coop" target="_blank" class="proj-cta-link">View on Itch.io <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 10L10 1M10 1H4M10 1v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></a>
+  <div style="position:relative; z-index:2; height:calc(100vh - var(--nav-h)); display:flex; flex-direction:column; justify-content:flex-end; padding: 60px 40px 80px;">
+    <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:end;">
+      <div>
+        <div class="proj-breadcrumb"><a href="games.html">Games</a><span>›</span><span>Kourou Space Coop</span></div>
+        <h1 class="proj-title">Internship —<br>3D Generalist</h1>
+        <p class="proj-tagline">A VR cooperative experience designed for the CNES, showcasing the key missions of Ariane 5 — built to coincide with the anticipated completion of Ariane 6.</p>
+        <a href="https://atsue.itch.io/kourou-space-coop" target="_blank" class="proj-cta-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg>
+          View on Itch.io
+        </a>
+      </div>
+      <div class="proj-meta-list">
+        <div class="proj-meta-item"><label>Role</label><span>3D Generalist</span></div>
+        <div class="proj-meta-item"><label>Duration</label><span>2 Months</span></div>
+        <div class="proj-meta-item"><label>Tools</label><span>Blender · Substance Painter · Unity</span></div>
+        <div class="proj-meta-item"><label>Type</label><span>Internship — CNES</span></div>
+      </div>
     </div>
-    <div class="proj-meta-list">
-      <div class="proj-meta-item"><label>Role</label><span>3D Generalist</span></div>
-      <div class="proj-meta-item"><label>Duration</label><span>2 Months</span></div>
-      <div class="proj-meta-item"><label>Tools</label><span>Blender · Substance Painter · Unity</span></div>
-      <div class="proj-meta-item"><label>Type</label><span>Internship — CNES</span></div>
+    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; animation: bounce 2s infinite;">
+      <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6);">Scroll</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
 </section>
@@ -47,13 +67,24 @@
 
 <div class="proj-content">
 
-  <!-- Intro -->
+  <!-- Context -->
   <div class="block-text reveal">
     <p class="block-label">Context</p>
     <h2 class="block-heading">Ariane, vous me recevez ?</h2>
     <div class="block-body">
       <p>"Kourou Space Coop: Ariane, vous me recevez ?" is a game designed for the CNES (Centre national d'études spatiales). We were tasked with creating a Virtual Reality experience showcasing the key missions of Ariane 5. This initiative followed the success of another game, Orbital Dance, and coincided with the anticipated completion of Ariane 6 between mid-June and mid-July. It was the perfect opportunity to revisit the highlights of Ariane 5's missions.</p>
     </div>
+  </div>
+
+  <!-- In-game screenshots -->
+  <div class="block-text reveal" style="margin-bottom:24px;">
+    <p class="block-label">Result</p>
+    <h2 class="block-heading">In-game Screenshots</h2>
+  </div>
+  <div class="block-media-3col reveal">
+    <div class="media-wrap loaded"><img src="/Portfolio/screen1.png" alt="Screenshot 01" style="opacity:1;" class="loaded" /></div>
+    <div class="media-wrap loaded"><img src="/Portfolio/screen2.png" alt="Screenshot 02" style="opacity:1;" class="loaded" /></div>
+    <div class="media-wrap loaded"><img src="/Portfolio/screen3.png" alt="Screenshot 03" style="opacity:1;" class="loaded" /></div>
   </div>
 
   <!-- Concept Art + Blockout -->
@@ -66,9 +97,9 @@
   </div>
 
   <div class="block-labeled-gallery reveal">
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Concept_art_Mission_Control" alt="Concept art Mission Control" /></div><figcaption>Concept_art_Mission_Control</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Concept_art_Gloves" alt="Concept art Gloves" /></div><figcaption>Concept_art_Gloves</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Blockout_Mission_Control" alt="Blockout Mission Control" /></div><figcaption>Blockout_Mission_Control</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/conceptart.png" alt="Concept art Mission Control" style="opacity:1;" class="loaded" /></div><figcaption>Concept_art_Mission_Control</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/conceptartgloves.png" alt="Concept art Gloves" style="opacity:1;" class="loaded" /></div><figcaption>Concept_art_Gloves</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/blockoutmissioncontrol.png" alt="Blockout Mission Control" style="opacity:1;" class="loaded" /></div><figcaption>Blockout_Mission_Control</figcaption></figure>
   </div>
 
   <!-- Shaders -->
@@ -80,9 +111,9 @@
         <p>I designed a cathode ray tube shader graph to captivate players' attention, and created a second shader specifically for objects that players can pick up or interact with from a distance — enhancing both visual appeal and gameplay immersion.</p>
       </div>
     </div>
-    <div class="block-media-2col" style="margin-bottom:0">
-      <div class="media-wrap"><img data-src="https://placehold.co/700x525/141414/333?text=Shader+CRT" alt="CRT Shader" /></div>
-      <div class="media-wrap"><img data-src="https://placehold.co/700x525/141414/333?text=Shader+Interaction" alt="Interaction Shader" /></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+      <div class="media-wrap loaded"><img src="/Portfolio/shadergrabobjeCt.gif" alt="CRT Shader" style="opacity:1;" class="loaded" /></div>
+      <div class="media-wrap loaded"><img src="/Portfolio/shaderscreencomputer.gif" alt="Interaction Shader" style="opacity:1;" class="loaded" /></div>
     </div>
   </div>
 
@@ -91,15 +122,15 @@
     <p class="block-label">Puzzle — Barometer</p>
     <h2 class="block-heading">Pressure Puzzle Barometer</h2>
     <div class="block-body">
-      <p>At the request of the Game Designers, I modeled a barometer for a puzzle where the AI reports pressure issues within the Ariane 5 launcher. The player onboard the launcher must adjust the pressure using valves, working collaboratively with the player in Mission Control who monitors the pressure levels via the barometers I designed. Ensuring the barometers were clear and easy to read was critical, as any confusion could hinder gameplay and player understanding.</p>
+      <p>At the request of the Game Designers, I modeled a barometer for a puzzle where the AI reports pressure issues within the Ariane 5 launcher. The player onboard the launcher must adjust the pressure using valves, working collaboratively with the player in Mission Control who monitors the pressure levels via the barometers I designed.</p>
     </div>
   </div>
 
   <div class="block-labeled-gallery reveal">
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=PNG_Barometer" alt="PNG Barometer" /></div><figcaption>PNG_Barometer</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Substance_Barometer" alt="Substance Barometer" /></div><figcaption>Substance_Barometer</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=POV_Player_1" alt="POV Player 1" /></div><figcaption>POV_Player_1</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=POV_Player_2" alt="POV Player 2" /></div><figcaption>POV_Player_2</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/pbgbarometer.png" alt="PNG Barometer" style="opacity:1;" class="loaded" /></div><figcaption>PNG_Barometer</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/substancebarometer.png" alt="Substance Barometer" style="opacity:1;" class="loaded" /></div><figcaption>Substance_Barometer</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/povplayer1.gif" alt="POV Player 1" style="opacity:1;" class="loaded" /></div><figcaption>POV_Player_1</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/povplayer2.gif" alt="POV Player 2" style="opacity:1;" class="loaded" /></div><figcaption>POV_Player_2</figcaption></figure>
   </div>
 
   <!-- Fuse Box -->
@@ -107,17 +138,17 @@
     <p class="block-label">Puzzle — Fuse Box</p>
     <h2 class="block-heading">Fuse Box & Power Failure Mechanic</h2>
     <div class="block-body">
-      <p>As part of the game's new puzzle mechanics, the Game Designers tasked me with modeling a fuse box and individual fuses for a scenario where the AI alerts players to a launcher power failure. To solve this, the player inside the launcher must locate the fuse box and correctly place the new fuses in their designated slots. Each correctly positioned fuse updates a real-time electronic interface in the control base, indicating its status. Once all four fuses are properly installed, the player in the control base validates the sequence, unlocking the booster separation levers and advancing the mission.</p>
+      <p>As part of the game's new puzzle mechanics, the Game Designers tasked me with modeling a fuse box and individual fuses for a scenario where the AI alerts players to a launcher power failure. To solve this, the player inside the launcher must locate the fuse box and correctly place the new fuses in their designated slots. Each correctly positioned fuse updates a real-time electronic interface in the control base. Once all four fuses are properly installed, the player in the control base validates the sequence, unlocking the booster separation levers and advancing the mission.</p>
     </div>
   </div>
 
   <div class="block-labeled-gallery reveal">
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Fusible" alt="Fusible" /></div><figcaption>Fusible</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Boitier_Fusible" alt="Boitier Fusible" /></div><figcaption>Boitier_Fusible</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=POV_J1" alt="POV J1" /></div><figcaption>POV_J1</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=POV_J2" alt="POV J2" /></div><figcaption>POV_J2</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Atlasing_Blender" alt="Atlasing Blender" /></div><figcaption>Atlasing_Blender</figcaption></figure>
-    <figure class="labeled-item"><div class="media-wrap"><img data-src="https://placehold.co/500x375/141414/333?text=Substance_Painter" alt="Substance Painter" /></div><figcaption>Substance_Painter</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/fusible.png" alt="Fusible" style="opacity:1;" class="loaded" /></div><figcaption>Fusible</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/boitierfusible.png" alt="Boitier Fusible" style="opacity:1;" class="loaded" /></div><figcaption>Boitier_Fusible</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/povplayer1fusible.gif" alt="POV J1" style="opacity:1;" class="loaded" /></div><figcaption>POV_J1</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/povplayer2fusible.gif" alt="POV J2" style="opacity:1;" class="loaded" /></div><figcaption>POV_J2</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/atlasing blender.png" alt="Atlasing Blender" style="opacity:1;" class="loaded" /></div><figcaption>Atlasing_Blender</figcaption></figure>
+    <figure class="labeled-item"><div class="media-wrap loaded"><img src="/Portfolio/substancepaintersatlasing.png" alt="Substance Painter" style="opacity:1;" class="loaded" /></div><figcaption>Substance_Painter</figcaption></figure>
   </div>
 
   <!-- UI -->
@@ -129,18 +160,7 @@
         <p>I was responsible for the UI design of the game's menus, which included creating backgrounds, buttons, logos, and other visual elements. I started by designing them in Photoshop, focusing on clarity and intuitiveness. Once finalized, I imported and integrated them into Unity, ensuring all resolutions and formats were compatible with the project's requirements.</p>
       </div>
     </div>
-    <div class="media-wrap"><img data-src="https://placehold.co/700x525/141414/333?text=UI_Unity" alt="UI Unity" /></div>
-  </div>
-
-  <!-- In-game screenshots -->
-  <div class="block-text reveal">
-    <p class="block-label">Result</p>
-    <h2 class="block-heading">In-game Screenshots</h2>
-  </div>
-  <div class="block-media-3col reveal">
-    <div class="media-wrap"><img data-src="https://placehold.co/500x500/141414/333?text=Screenshot+01" alt="Screenshot 01" /></div>
-    <div class="media-wrap"><img data-src="https://placehold.co/500x500/141414/333?text=Screenshot+02" alt="Screenshot 02" /></div>
-    <div class="media-wrap"><img data-src="https://placehold.co/500x500/141414/333?text=Screenshot+03" alt="Screenshot 03" /></div>
+    <div class="media-wrap loaded"><img src="/Portfolio/uiunity.png" alt="UI Unity" style="opacity:1;" class="loaded" /></div>
   </div>
 
 </div>
@@ -148,27 +168,28 @@
 <section class="related-section">
   <p class="related-label">You may also like</p>
   <div class="related-grid">
-    <a href="project-masocat.html" class="related-card reveal"><div class="media-wrap"><img data-src="https://placehold.co/600x450/141414/333?text=Masocat" alt="Masocat" /></div><div class="related-info"><h4>Masocat</h4><p>Bachelor Project · 2 Months</p></div></a>
-    <a href="project-kintsugi.html" class="related-card reveal" style="transition-delay:0.1s"><div class="media-wrap"><img src="/Portfolio/screen-masocat.png" alt="Masocat" class="card-still" style="opacity:1;" /></div><div class="related-info"><h4>Kintsugi</h4><p>Graduation Project · 17 Weeks</p></div></a>
-    <a href="project-kaiju.html" class="related-card reveal" style="transition-delay:0.2s"><div class="media-wrap"><img src="/Portfolio/screen-kaiju.png" alt="Kaiju" class="card-still" /></div><div class="related-info"><h4>Super Kaiju Simulator</h4><p>ALT+CTRL Project · 2 Weeks</p></div></a>
+    <a href="/Portfolio/project-masocat.html" class="related-card reveal">
+      <div class="media-wrap loaded"><img src="/Portfolio/screen-masocat.png" alt="Masocat" style="opacity:1;" class="loaded" /></div>
+      <div class="related-info"><h4>Masocat</h4><p>Bachelor Project · 2 Months</p></div>
+    </a>
+    <a href="/Portfolio/project-kintsugi.html" class="related-card reveal" style="transition-delay:0.1s">
+      <div class="media-wrap loaded"><img src="/Portfolio/screen_kintsugi.png" alt="Kintsugi" style="opacity:1;" class="loaded" /></div>
+      <div class="related-info"><h4>Kintsugi</h4><p>Graduation Project · 17 Weeks</p></div>
+    </a>
+    <a href="/Portfolio/project-kaiju.html" class="related-card reveal" style="transition-delay:0.2s">
+      <div class="media-wrap"><img data-src="https://placehold.co/600x450/141414/333?text=Super+Kaiju" alt="Super Kaiju" /></div>
+      <div class="related-info"><h4>Super Kaiju Simulator</h4><p>ALT+CTRL Project · 2 Weeks</p></div>
+    </a>
   </div>
 </section>
 
 <footer>
   <p>© 2025 Enzo de Corte</p>
   <div class="footer-links">
-    <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" aria-label="LinkedIn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="https://d3nz0k.artstation.com" target="_blank" aria-label="ArtStation">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg>
-    </a>
-    <a href="https://github.com/D3NZ0K" target="_blank" aria-label="GitHub">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-    </a>
-    <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg>
-    </a>
+    <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://d3nz0k.artstation.com" target="_blank" aria-label="ArtStation"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
+    <a href="https://github.com/D3NZ0K" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+    <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
   </div>
 </footer>
 
