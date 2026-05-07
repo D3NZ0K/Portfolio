@@ -280,25 +280,33 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
 .location-logos{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:24px;
+  gap:20px;
 }
 
+/* chaque bloc logo */
+.location-logos .labeled-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* boîte carrée FIXE */
 .location-logos .media-wrap{
-  aspect-ratio:1/1;
-  overflow:hidden;
+  width:160px !important;
+  height:160px !important;
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  overflow:hidden;
+  margin:0 auto;
 }
 
-/* logos plus petits */
+/* image vraiment réduite */
 .location-logos .media-wrap img{
-  width:140px !important;
-  height:140px !important;
-
-  max-width:140px !important;
-  max-height:140px !important;
+  width:80px !important;
+  height:80px !important;
 
   object-fit:contain;
 }
