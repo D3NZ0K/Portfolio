@@ -278,3 +278,34 @@
   50% { transform: translateX(-50%) translateY(8px); }
 }
 }
+
+/* ===== LOGOS LOCATIONS UNIQUEMENT ===== */
+
+#location-logos{
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr) !important;
+  gap:20px !important;
+}
+
+#location-logos .media-wrap{
+  width:120px !important;
+  height:120px !important;
+
+  margin:auto !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  overflow:hidden !important;
+}
+
+#location-logos .media-wrap img{
+  width:60px !important;
+  height:60px !important;
+
+  max-width:60px !important;
+  max-height:60px !important;
+
+  object-fit:contain !important;
+}
