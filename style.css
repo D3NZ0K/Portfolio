@@ -276,7 +276,7 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
   opacity: 1 !important;
 }
 
-/* ===== Logos des lieux uniquement ===== */
+/* ===== Logos des lieux epistolary uniquement ===== */
 
 .block-labeled-gallery{
   display:grid;
