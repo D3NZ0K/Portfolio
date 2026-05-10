@@ -134,14 +134,14 @@
    .acc-gallery-item video,
    .acc-gallery-item iframe {
      width: 100%;
-     height: 180px;
-     object-fit: contain;
+     height: 260px;
+     object-fit: cover;
      display: block;
      opacity: 1;
-     background: #111;
    }
    .acc-gallery-item:first-child {
-     grid-column: span 1;
+     grid-column: span 2;
+     aspect-ratio: 16/9;
    }
 
     .acc-body { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; }
