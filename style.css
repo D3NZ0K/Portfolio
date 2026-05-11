@@ -309,3 +309,44 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
   object-fit: cover;
   display: block;
 }
+
+/* ===== FORCE ARCHIVE GALLERY ===== */
+
+.acc-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.acc-gallery-item {
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  background: #111 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Images */
+.acc-gallery-item img {
+  width: 100% !important;
+  height: 190px !important;
+
+  object-fit: contain !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  display: block !important;
+}
+
+/* Vidéos */
+.acc-gallery-item video {
+  width: 100% !important;
+  height: 240px !important;
+
+  object-fit: cover !important;
+
+  display: block !important;
+}
