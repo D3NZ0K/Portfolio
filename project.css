@@ -306,17 +306,19 @@
   object-fit:contain;
 }
 
-/* ===== Réduction uniquement des stickers Masocat de cette galerie ===== */
+/* ===== Taille images dans les galeries ===== */
 
-.block-labeled-gallery .media-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
+.block-labeled-gallery .media-wrap img,
+.block-media-2col .media-wrap img,
+.block-media-3col .media-wrap img{
+  object-fit: contain !important;
 
-.block-labeled-gallery .media-wrap img{
-  width:80% !important;
-  height:80% !important;
-  object-fit:contain !important;
+  max-width: 85% !important;
+  max-height: 85% !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  margin: auto;
+  display: block;
 }
