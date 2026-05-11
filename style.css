@@ -350,3 +350,14 @@ a, button, .project-card, .art-card, .related-card, .archive-row, .filter-btn, .
 
   display: block !important;
 }
+/* Force taille uniforme des vidéos archive */
+
+.acc-gallery-item video {
+  width: 100% !important;
+  height: 230px !important;
+
+  object-fit: cover !important;
+
+  display: block !important;
+  border-radius: 12px !important;
+}
