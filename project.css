@@ -316,7 +316,7 @@
 }
 
 .block-labeled-gallery .media-wrap img{
-  width:70%;
-  height:70%;
-  object-fit:contain;
+  width:70% !important;
+  height:70% !important;
+  object-fit:contain !important;
 }
