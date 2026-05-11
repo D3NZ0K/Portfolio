@@ -308,17 +308,34 @@
 
 /* ===== Taille images dans les galeries ===== */
 
+/* ===== Galerie uniforme ===== */
+
+.block-labeled-gallery .media-wrap,
+.block-media-2col .media-wrap,
+.block-media-3col .media-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Images */
 .block-labeled-gallery .media-wrap img,
 .block-media-2col .media-wrap img,
 .block-media-3col .media-wrap img{
-  object-fit: contain !important;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-  max-width: 85% !important;
-  max-height: 85% !important;
-
-  width: auto !important;
-  height: auto !important;
-
-  margin: auto;
-  display: block;
+/* Vidéos légèrement plus grandes */
+.block-labeled-gallery .media-wrap video,
+.block-media-2col .media-wrap video,
+.block-media-3col .media-wrap video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
 }
