@@ -7,293 +7,59 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
-    /* ===== LAYOUT ===== */
-    .page-wrap {
-      padding: calc(var(--nav-h) + 60px) 40px 80px;
-      max-width: 1300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 340px 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    /* ===== COL 1 — PHOTO ===== */
-    .col-photo {
-      position: sticky;
-      top: calc(var(--nav-h) + 24px);
-    }
-
-    .about-photo {
-      aspect-ratio: 3/4;
-      overflow: hidden;
-      background: var(--surface);
-    }
-
-    .about-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(20%);
-      opacity: 1;
-    }
-
-    .about-caption {
-      margin-top: 12px;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-    }
-
-    /* Social links under photo */
-    .photo-socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .photo-social {
-      width: 36px; height: 36px;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted);
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .photo-social:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* ===== COL 2 — ABOUT ===== */
-    .col-about {}
-
-    .about-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .about-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 600;
-      line-height: 1.05;
-      margin-bottom: 32px;
-    }
-
-    .about-title em { font-style: italic; color: var(--accent); }
-
-    .about-body p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
-
-    .about-body p strong { color: var(--text); font-weight: 500; }
-
-    /* Skills */
-    .skills-block {
-      margin-top: 40px;
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-    }
-
-    .skills-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 24px;
-    }
-
-    .skill-item { display: flex; flex-direction: column; gap: 6px; }
-    .skill-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; display: flex; justify-content: space-between; }
-    .skill-name span { color: var(--muted); font-weight: 400; }
-    .skill-bar { height: 2px; background: var(--border); position: relative; overflow: hidden; }
-    .skill-fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); width: 0; transition: width 1.2s var(--ease-out); }
-    .skill-item.visible .skill-fill { width: var(--w); }
-
-    /* CV button */
-    .cv-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 32px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      transition: border-color 0.3s, color 0.3s;
-    }
+    .page-wrap { padding: calc(var(--nav-h) + 60px) 40px 80px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr 1fr; gap: 60px; align-items: start; }
+    .col-photo { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .about-photo { aspect-ratio: 3/4; overflow: hidden; background: var(--surface); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); opacity: 1; }
+    .about-caption { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
+    .photo-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .cv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--border); color: var(--text); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; transition: border-color 0.3s, color 0.3s; text-decoration: none; }
     .cv-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Volleyball section */
-    .volleyball-block {
-      margin-top: 40px;
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-    }
-
-    .volleyball-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .volleyball-title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .volleyball-block p {
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .volleyball-photos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .volleyball-photos .media-wrap { aspect-ratio: 4/3; }
-
-    /* ===== COL 3 — CONTACT ===== */
-    .col-contact {
-      position: sticky;
-      top: calc(var(--nav-h) + 24px);
-    }
-
-    .contact-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .contact-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 600;
-      line-height: 1.05;
-      margin-bottom: 8px;
-    }
-
+    .photo-socials { display: flex; gap: 8px; flex-wrap: wrap; }
+    .photo-social { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: color 0.2s, border-color 0.2s; }
+    .photo-social:hover { color: var(--accent); border-color: var(--accent); }
+    .about-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .about-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 600; line-height: 1.05; margin-bottom: 32px; }
+    .about-title em { font-style: italic; color: var(--accent); }
+    .about-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.85; margin-bottom: 16px; }
+    .about-body p strong { color: var(--text); font-weight: 500; }
+    .skills-block { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
+    .skills-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .skills-two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .skills-col-title { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .hardskill-list { display: flex; flex-direction: column; gap: 12px; }
+    .hardskill-item { display: flex; align-items: center; gap: 12px; }
+    .hardskill-logo { width: 28px; height: 28px; flex-shrink: 0; }
+    .hardskill-logo img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; }
+    .hardskill-name { font-size: 0.82rem; color: var(--text); }
+    .softskill-list { display: flex; flex-direction: column; gap: 10px; }
+    .softskill-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text); }
+    .softskill-item::before { content: '→'; color: var(--accent); font-size: 0.75rem; flex-shrink: 0; }
+    .volleyball-block { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
+    .volleyball-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .volleyball-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin-bottom: 16px; }
+    .volleyball-block p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 20px; }
+    .volleyball-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .col-contact { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .contact-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .contact-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.05; margin-bottom: 8px; }
     .contact-title em { font-style: italic; color: var(--accent); }
-
-    .contact-status {
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      margin-bottom: 32px;
-    }
-
-    /* Info rows */
-    .contact-info { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-    .info-row {}
+    .contact-status { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 32px; }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
     .info-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-    .info-value { font-size: 0.88rem; color: var(--text); }
+    .info-value { font-size: 0.88rem; color: var(--text); text-decoration: none; }
     a.info-value:hover { color: var(--accent); }
-
-    /* Form */
-    .form-title {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-
-    .form-group { position: relative; margin-bottom: 24px; }
-    .form-group label { display: block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      padding: 8px 0;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); font-size: 0.85rem; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
-    .form-group::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.4s var(--ease-out); }
-    .form-group:focus-within::after { width: 100%; }
-    .form-group textarea { resize: none; min-height: 100px; line-height: 1.7; }
-
-    /* Subject pills */
-    .subject-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .subject-pills input[type="radio"] { display: none; }
-    .subject-pills label { display: inline-flex; align-items: center; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 5px 12px; cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; margin-bottom: 0; }
-    .subject-pills input[type="radio"]:checked + label { color: var(--bg); background: var(--accent); border-color: var(--accent); }
-    .subject-pills label:hover { border-color: var(--accent); color: var(--text); }
-
-    .btn-send {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--accent);
-      color: #0e0e0e;
-      font-family: var(--font-body);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: none;
-      padding: 14px 28px;
-      cursor: pointer;
-      transition: background 0.3s;
-      margin-top: 8px;
-    }
-    .btn-send:hover { background: #d4b87a; }
-    .btn-send.loading { opacity: 0.7; pointer-events: none; }
-
-    #form-status { margin-top: 16px; font-size: 0.8rem; padding: 12px 16px; display: none; border: 1px solid; }
-    #form-status.success { display: block; color: #7ec89a; border-color: #7ec89a33; background: #7ec89a0a; }
-    #form-status.error { display: block; color: #e07c7c; border-color: #e07c7c33; background: #e07c7c0a; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1100px) {
-      .page-wrap { grid-template-columns: 280px 1fr; gap: 40px; }
-      .col-contact { grid-column: 1 / -1; position: static; }
-    }
-
-    @media (max-width: 768px) {
-      .page-wrap { grid-template-columns: 1fr; padding: calc(var(--nav-h) + 40px) 20px 60px; gap: 40px; }
-      .col-photo { position: static; }
-      .col-contact { position: static; }
-    }
+    .contact-divider { border-top: 1px solid var(--border); padding-top: 32px; margin-bottom: 24px; }
+    .contact-cta-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .contact-cta-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 24px; }
+    .btn-mail { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #0e0e0e; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: background 0.3s; }
+    .btn-mail:hover { background: #d4b87a; }
+    @media (max-width: 1100px) { .page-wrap { grid-template-columns: 260px 1fr; gap: 40px; } .col-contact { grid-column: 1 / -1; position: static; } }
+    @media (max-width: 768px) { .page-wrap { grid-template-columns: 1fr; padding: calc(var(--nav-h) + 40px) 20px 60px; gap: 40px; } .col-photo { position: static; } .col-contact { position: static; } .skills-two-cols { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
   <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -305,62 +71,63 @@
     <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
-
 <div class="page-wrap">
-
   <!-- COL 1 — PHOTO -->
   <div class="col-photo reveal">
     <div class="about-photo media-wrap loaded">
       <img src="/Portfolio/pp_enzo_de_corte.png" alt="Enzo de Corte" style="opacity:1;" class="loaded" />
     </div>
-    <div class="about-caption">
-      <span>Enzo de Corte</span>
-      <span>Paris, La Défense</span>
-    </div>
-    <div class="photo-socials">
-      <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" class="photo-social" aria-label="LinkedIn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="https://d3nz0k.artstation.com" target="_blank" class="photo-social" aria-label="ArtStation">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg>
-      </a>
-      <a href="https://github.com/D3NZ0K" target="_blank" class="photo-social" aria-label="GitHub">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      </a>
-      <a href="https://d3nz0k.itch.io" target="_blank" class="photo-social" aria-label="Itch.io">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg>
-      </a>
+    <div class="about-caption"><span>Enzo de Corte</span><span>Paris</span></div>
+    <div class="photo-actions">
+      <a href="/Portfolio/CV_Enzo_de_Corte.pdf" download class="cv-btn">Download CV ↓</a>
+      <div class="photo-socials">
+        <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" class="photo-social" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://d3nz0k.artstation.com" target="_blank" class="photo-social" aria-label="ArtStation"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
+        <a href="https://github.com/D3NZ0K" target="_blank" class="photo-social" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        <a href="https://d3nz0k.itch.io" target="_blank" class="photo-social" aria-label="Itch.io"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
+      </div>
     </div>
   </div>
-
   <!-- COL 2 — ABOUT -->
   <div class="col-about">
-
     <p class="about-eyebrow reveal">About me</p>
     <h1 class="about-title reveal">Game Artist<br>& <em>Storyteller</em></h1>
-
     <div class="about-body">
       <p class="reveal">Hi! My name is Enzo. I am a <strong>22-year-old Game Art student at IIM</strong> in Paris La Défense, and what I like is creating universes, atypical characters, and a strong atmosphere in games.</p>
       <p class="reveal">In my youth I drew my favorite comic book characters or hundreds of Pokémon, and spent evenings playing cooperative games with my uncle. The association of these two passions led me naturally to study Game Art — <strong>a job where I want to immerse players in the heart of my imagination.</strong></p>
       <p class="reveal">Being a big volleyball fan, I love teamwork. I'm also very curious, and admittedly, a big talker.</p>
     </div>
-
-    <!-- Skills -->
     <div class="skills-block reveal">
-      <p class="skills-label">Skills & Tools</p>
-      <div class="skills-grid">
-        <div class="skill-item" style="--w: 90%"><div class="skill-name">Spine 2D <span>Expert</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-        <div class="skill-item" style="--w: 85%"><div class="skill-name">Unity <span>Advanced</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-        <div class="skill-item" style="--w: 80%"><div class="skill-name">Photoshop <span>Advanced</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-        <div class="skill-item" style="--w: 75%"><div class="skill-name">Blender <span>Intermediate</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-        <div class="skill-item" style="--w: 70%"><div class="skill-name">3DS Max <span>Intermediate</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
-        <div class="skill-item" style="--w: 65%"><div class="skill-name">VFX / Shaders <span>Intermediate</span></div><div class="skill-bar"><div class="skill-fill"></div></div></div>
+      <p class="skills-label">Skills</p>
+      <div class="skills-two-cols">
+        <div>
+          <p class="skills-col-title">Hard Skills — Tools</p>
+          <div class="hardskill-list">
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_spine.png" alt="Spine" /></div><span class="hardskill-name">Spine 2D</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_unity.png" alt="Unity" /></div><span class="hardskill-name">Unity</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_photoshop.png" alt="Photoshop" /></div><span class="hardskill-name">Photoshop</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_blender.png" alt="Blender" /></div><span class="hardskill-name">Blender</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_3dsmax.png" alt="3DS Max" /></div><span class="hardskill-name">3DS Max</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_substance.png" alt="Substance Painter" /></div><span class="hardskill-name">Substance Painter</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_zbrush.png" alt="ZBrush" /></div><span class="hardskill-name">ZBrush</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_unreal.jpg" alt="Unreal Engine" /></div><span class="hardskill-name">Unreal Engine</span></div>
+          </div>
+        </div>
+        <div>
+          <p class="skills-col-title">Soft Skills</p>
+          <div class="softskill-list">
+            <div class="softskill-item">Team spirit & collaboration</div>
+            <div class="softskill-item">Communication</div>
+            <div class="softskill-item">Creative problem solving</div>
+            <div class="softskill-item">Adaptability</div>
+            <div class="softskill-item">Attention to detail</div>
+            <div class="softskill-item">Curiosity & self-learning</div>
+            <div class="softskill-item">Time management</div>
+            <div class="softskill-item">Feedback receptiveness</div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <a href="/Portfolio/CV_Enzo_de_Corte.pdf" download class="cv-btn reveal">Download CV ↓</a>
-
-    <!-- Volleyball -->
     <div class="volleyball-block reveal">
       <p class="volleyball-label">Beyond the screen</p>
       <h2 class="volleyball-title">Volleyball & Beach Volleyball</h2>
@@ -372,66 +139,24 @@
         <div class="media-wrap loaded" style="aspect-ratio:4/3;"><img src="/Portfolio/508.jpg" alt="Volleyball" style="opacity:1;" class="loaded" /></div>
       </div>
     </div>
-
   </div>
-
   <!-- COL 3 — CONTACT -->
   <div class="col-contact reveal">
-
     <p class="contact-eyebrow">Get in touch</p>
     <h2 class="contact-title">Let's work<br><em>together.</em></h2>
     <p class="contact-status">→ Open to internship opportunities</p>
-
     <div class="contact-info">
-      <div class="info-row">
-        <div class="info-label">Email</div>
-        <a href="mailto:ton.email@gmail.com" class="info-value">ton.email@gmail.com</a>
-      </div>
-      <div class="info-row">
-        <div class="info-label">Based in</div>
-        <div class="info-value">Paris, La Défense — France</div>
-      </div>
+      <div class="info-row"><div class="info-label">Email</div><a href="mailto:enzo.decorte@iim.fr" class="info-value">enzo.decorte@iim.fr</a></div>
+      <div class="info-row"><div class="info-label">Based in</div><div class="info-value">Paris, La Défense — France</div></div>
+      <div class="info-row"><div class="info-label">Languages</div><div class="info-value">French (native) · English (professional)</div></div>
     </div>
-
-    <p class="form-title">Send a message</p>
-
-    <form id="contact-form" novalidate>
-      <div class="form-group">
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="from_name" placeholder="Jane Smith" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Your email</label>
-        <input type="email" id="email" name="from_email" placeholder="jane@studio.com" required />
-      </div>
-      <div class="form-group">
-        <label>Subject</label>
-        <div class="subject-pills">
-          <input type="radio" id="s-internship" name="subject" value="Internship opportunity" checked />
-          <label for="s-internship">Internship</label>
-          <input type="radio" id="s-collab" name="subject" value="Collaboration" />
-          <label for="s-collab">Collaboration</label>
-          <input type="radio" id="s-feedback" name="subject" value="Feedback" />
-          <label for="s-feedback">Feedback</label>
-          <input type="radio" id="s-other" name="subject" value="Other" />
-          <label for="s-other">Other</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
-      </div>
-      <button type="submit" class="btn-send" id="submit-btn">
-        <span class="btn-label">Send message</span>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </button>
-      <div id="form-status"></div>
-    </form>
-
+    <div class="contact-divider">
+      <p class="contact-cta-label">Send a message</p>
+      <p class="contact-cta-desc">Have an internship opportunity, a project to discuss, or just want to say hi? Click below to send me an email directly — I'll get back to you as soon as possible.</p>
+      <a href="mailto:enzo.decorte@iim.fr?subject=Portfolio%20Contact&body=Hi%20Enzo%2C%0A%0A" class="btn-mail">Send an email <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
   </div>
-
 </div>
-
 <footer>
   <p>© 2025 Enzo de Corte</p>
   <div class="footer-links">
@@ -441,57 +166,7 @@
     <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
   </div>
 </footer>
-
 <button class="back-top" aria-label="Back to top">↑</button>
 <script src="main.js"></script>
-<script>
-  // Skill bars
-  const skillItems = document.querySelectorAll('.skill-item');
-  const skillObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); skillObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.3 });
-  skillItems.forEach(s => skillObs.observe(s));
-
-  // EmailJS
-  const EMAILJS_PUBLIC_KEY  = 'VOTRE_PUBLIC_KEY';
-  const EMAILJS_SERVICE_ID  = 'VOTRE_SERVICE_ID';
-  const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const status = document.getElementById('form-status');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = form.from_name.value.trim();
-    const email = form.from_email.value.trim();
-    const message = form.message.value.trim();
-    if (!name || !email || !message) { showStatus('error', 'Please fill in all fields.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showStatus('error', 'Please enter a valid email address.'); return; }
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-    status.style.display = 'none';
-    try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
-      showStatus('success', '✓ Message sent! I\'ll get back to you as soon as possible.');
-      form.reset();
-      document.getElementById('s-internship').checked = true;
-    } catch (err) {
-      showStatus('error', '✗ Something went wrong. Try emailing me directly.');
-    } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
-    }
-  });
-
-  function showStatus(type, msg) {
-    status.className = type;
-    status.textContent = msg;
-    status.style.display = 'block';
-  }
-</script>
 </body>
 </html>
