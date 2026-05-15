@@ -7,59 +7,116 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="/Portfolio/PP_Onglet.png">
+  <link rel="icon" type="image/png" href="/Portfolio/pp_enzo_de_corte.png">
   <style>
-    .page-wrap { padding: calc(var(--nav-h) + 60px) 40px 80px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr 1fr; gap: 60px; align-items: start; }
-    .col-photo { position: sticky; top: calc(var(--nav-h) + 24px); }
-    .about-photo { aspect-ratio: 2/3; overflow: hidden; background: var(--surface); }
+    body { overflow-x: hidden; }
+
+    .page-wrap {
+      height: calc(100vh - var(--nav-h));
+      margin-top: var(--nav-h);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    /* ===== COL GAUCHE ===== */
+    .col-left {
+      border-right: 1px solid var(--border);
+      height: 100%;
+      overflow-y: auto;
+      padding: 24px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .col-left::-webkit-scrollbar { width: 4px; }
+    .col-left::-webkit-scrollbar-track { background: transparent; }
+    .col-left::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .about-photo { aspect-ratio: 3/4; overflow: hidden; background: var(--surface); flex-shrink: 0; }
     .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); opacity: 1; }
-    .about-caption { margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
-    .photo-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }    .cv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--border); color: var(--text); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; transition: border-color 0.3s, color 0.3s; text-decoration: none; }
+
+    .about-caption { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
+
+    /* CV Canva */
+    .canva-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 141.43%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .canva-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    .cv-btn { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border); color: var(--text); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px; transition: border-color 0.3s, color 0.3s; text-decoration: none; flex-shrink: 0; }
     .cv-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .photo-socials { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .photo-social { width: 100%; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: color 0.2s, border-color 0.2s; }
+
+    .photo-socials { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; flex-shrink: 0; }
+    .photo-social { height: 32px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: color 0.2s, border-color 0.2s; }
     .photo-social:hover { color: var(--accent); border-color: var(--accent); }
-    .about-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .about-title { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 600; line-height: 1.05; margin-bottom: 32px; }
-    .about-title em { font-style: italic; color: var(--accent); }
-    .about-body p { color: var(--muted); font-size: 0.92rem; line-height: 1.85; margin-bottom: 16px; }
-    .about-body p strong { color: var(--text); font-weight: 500; }
-    .skills-block { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
-    .skills-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .skills-two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .skills-col-title { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-    .hardskill-list { display: flex; flex-direction: column; gap: 12px; }
-    .hardskill-item { display: flex; align-items: center; gap: 12px; }
-    .hardskill-logo { width: 28px; height: 28px; flex-shrink: 0; }
-    .hardskill-logo img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; }
-    .hardskill-name { font-size: 0.82rem; color: var(--text); }
-    .softskill-list { display: flex; flex-direction: column; gap: 10px; }
-    .softskill-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text); }
-    .softskill-item::before { content: '→'; color: var(--accent); font-size: 0.75rem; flex-shrink: 0; }
-    .volleyball-block { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
-    .volleyball-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .volleyball-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin-bottom: 16px; }
-    .volleyball-block p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 20px; }
-    .volleyball-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .col-contact { position: sticky; top: calc(var(--nav-h) + 24px); }
-    .contact-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .contact-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 600; line-height: 1.05; margin-bottom: 8px; }
-    .contact-title em { font-style: italic; color: var(--accent); }
-    .contact-status { font-size: 0.85rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 32px; }
-    .contact-info { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-    .info-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-    .info-value { font-size: 0.88rem; color: var(--text); text-decoration: none; }
+
+    /* Contact dans col gauche */
+    .left-contact { border-top: 1px solid var(--border); padding-top: 16px; flex-shrink: 0; }
+    .left-contact-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; }
+    .left-contact-title em { font-style: italic; color: var(--accent); }
+    .left-contact-status { font-size: 0.72rem; color: var(--accent); margin-bottom: 12px; }
+    .left-info { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .info-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+    .info-value { font-size: 0.78rem; color: var(--text); text-decoration: none; }
     a.info-value:hover { color: var(--accent); }
-    .contact-divider { border-top: 1px solid var(--border); padding-top: 32px; margin-bottom: 24px; }
-    .contact-cta-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .contact-cta-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 24px; }
-    .btn-mail { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #0e0e0e; font-size: 0.76rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: background 0.3s; }
+    .btn-mail { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: #0e0e0e; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 16px; text-decoration: none; transition: background 0.3s; }
     .btn-mail:hover { background: #d4b87a; }
-    @media (max-width: 1100px) { .page-wrap { grid-template-columns: 260px 1fr; gap: 40px; } .col-contact { grid-column: 1 / -1; position: static; } }
-    @media (max-width: 768px) { .page-wrap { grid-template-columns: 1fr; padding: calc(var(--nav-h) + 40px) 20px 60px; gap: 40px; } .col-photo { position: static; } .col-contact { position: static; } .skills-two-cols { grid-template-columns: 1fr; } }
+
+    /* ===== COL DROITE ===== */
+    .col-right {
+      height: 100%;
+      overflow-y: auto;
+      padding: 32px 40px 40px;
+    }
+
+    .col-right::-webkit-scrollbar { width: 4px; }
+    .col-right::-webkit-scrollbar-track { background: transparent; }
+    .col-right::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .about-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .about-title { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 600; line-height: 1.05; margin-bottom: 20px; }
+    .about-title em { font-style: italic; color: var(--accent); }
+    .about-body p { color: var(--muted); font-size: 0.85rem; line-height: 1.75; margin-bottom: 12px; }
+    .about-body p strong { color: var(--text); font-weight: 500; }
+
+    /* Skills */
+    .skills-block { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .skills-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .skills-two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .skills-col-title { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .hardskill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hardskill-item { display: flex; align-items: center; gap: 8px; }
+    .hardskill-logo { width: 22px; height: 22px; flex-shrink: 0; }
+    .hardskill-logo img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; }
+    .hardskill-name { font-size: 0.75rem; color: var(--text); }
+    .softskill-list { display: flex; flex-direction: column; gap: 7px; }
+    .softskill-item { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text); }
+    .softskill-item::before { content: '→'; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; }
+
+    /* Volleyball */
+    .volleyball-block { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .volleyball-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .volleyball-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+    .volleyball-block p { color: var(--muted); font-size: 0.82rem; line-height: 1.7; margin-bottom: 12px; }
+    .volleyball-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .volleyball-photos .media-wrap { aspect-ratio: 4/3; }
+
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; height: auto; overflow: visible; }
+      .col-left, .col-right { height: auto; overflow: visible; border: none; padding: 20px; }
+    }
   </style>
 </head>
 <body>
+
 <nav>
   <a href="index.html" class="nav-logo">Enzo de <span>Corte</span></a>
   <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -71,32 +128,61 @@
     <li><a href="archive.html">Archive</a></li>
   </ul>
 </nav>
+
 <div class="page-wrap">
-  <!-- COL 1 — PHOTO -->
-  <div class="col-photo reveal">
+
+  <!-- COL GAUCHE -->
+  <div class="col-left">
+
     <div class="about-photo media-wrap loaded">
       <img src="/Portfolio/pp_enzo_de_corte.png" alt="Enzo de Corte" style="opacity:1;" class="loaded" />
     </div>
     <div class="about-caption"><span>Enzo de Corte</span><span>Paris</span></div>
-    <div class="photo-actions">
-      <a href="/Portfolio/CV_Enzo_de_Corte.pdf" download class="cv-btn">Download CV ↓</a>
-      <div class="photo-socials">
-        <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" class="photo-social" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="https://d3nz0k.artstation.com" target="_blank" class="photo-social" aria-label="ArtStation"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
-        <a href="https://github.com/D3NZ0K" target="_blank" class="photo-social" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-        <a href="https://d3nz0k.itch.io" target="_blank" class="photo-social" aria-label="Itch.io"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
-      </div>
+
+    <!-- CV Canva -->
+    <div class="canva-wrap">
+      <iframe loading="lazy" src="https://www.canva.com/design/DAGynTQ__6g/-eN4WdT7DEBto8SSB6S_pg/view?embed" allowfullscreen allow="fullscreen"></iframe>
     </div>
+
+    <a href="/Portfolio/CV_Enzo_de_Corte.pdf" download class="cv-btn">Download CV ↓</a>
+
+    <div class="photo-socials">
+      <a href="https://www.linkedin.com/in/enzo-de-corte/" target="_blank" class="photo-social" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://d3nz0k.artstation.com" target="_blank" class="photo-social" aria-label="ArtStation"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 002.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 00-2.164-1.333H9.419L21.598 22.54l1.92-3.325A2.42 2.42 0 0024 17.748zM2.522 8.5l5.548 9.602 5.593-9.59H2.522z"/></svg></a>
+      <a href="https://github.com/D3NZ0K" target="_blank" class="photo-social" aria-label="GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+      <a href="https://d3nz0k.itch.io" target="_blank" class="photo-social" aria-label="Itch.io"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
+    </div>
+
+    <!-- Contact -->
+    <div class="left-contact">
+      <h2 class="left-contact-title">Let's work <em>together.</em></h2>
+      <p class="left-contact-status">→ Open to internship opportunities</p>
+      <div class="left-info">
+        <div><div class="info-label">Email</div><a href="mailto:enzo.de.corte@gmail.com" class="info-value">enzo.de.corte@gmail.com</a></div>
+        <div><div class="info-label">Based in</div><div class="info-value">Paris — France</div></div>
+        <div><div class="info-label">Languages</div><div class="info-value">FR (native) · EN (professional)</div></div>
+      </div>
+      <a href="mailto:enzo.de.corte@gmail.com?subject=Portfolio%20Contact&body=Hi%20Enzo%2C%0A%0A" class="btn-mail">
+        Send an email
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
   </div>
-  <!-- COL 2 — ABOUT -->
-  <div class="col-about">
+
+  <!-- COL DROITE -->
+  <div class="col-right">
+
     <p class="about-eyebrow reveal">About me</p>
     <h1 class="about-title reveal">Game Artist<br>& <em>3D Generalist</em></h1>
+
     <div class="about-body">
       <p class="reveal">Hi! My name is Enzo. I am a <strong>22-year-old Game Art student at IIM</strong> in Paris La Défense, and what I like is creating universes, atypical characters, and a strong atmosphere in games.</p>
       <p class="reveal">In my youth I drew my favorite comic book characters or hundreds of Pokémon, and spent evenings playing cooperative games with my uncle. The association of these two passions led me naturally to study Game Art — <strong>a job where I want to immerse players in the heart of my imagination.</strong></p>
       <p class="reveal">Being a big volleyball fan, I love teamwork. I'm also very curious, and admittedly, a big talker.</p>
     </div>
+
+    <!-- Skills -->
     <div class="skills-block reveal">
       <p class="skills-label">Skills</p>
       <div class="skills-two-cols">
@@ -108,9 +194,9 @@
             <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_photoshop.png" alt="Photoshop" /></div><span class="hardskill-name">Photoshop</span></div>
             <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_blender.png" alt="Blender" /></div><span class="hardskill-name">Blender</span></div>
             <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_3dsmax.png" alt="3DS Max" /></div><span class="hardskill-name">3DS Max</span></div>
-            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_substance.png" alt="Substance Painter" /></div><span class="hardskill-name">Substance Painter</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_substance.png" alt="Substance" /></div><span class="hardskill-name">Substance Painter</span></div>
             <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_zbrush.png" alt="ZBrush" /></div><span class="hardskill-name">ZBrush</span></div>
-            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_unreal.png" alt="Unreal Engine" /></div><span class="hardskill-name">Unreal Engine</span></div>
+            <div class="hardskill-item"><div class="hardskill-logo"><img src="/Portfolio/logo_unreal.png" alt="Unreal" /></div><span class="hardskill-name">Unreal Engine</span></div>
           </div>
         </div>
         <div>
@@ -128,6 +214,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Volleyball -->
     <div class="volleyball-block reveal">
       <p class="volleyball-label">Beyond the screen</p>
       <h2 class="volleyball-title">Volleyball & Beach Volleyball</h2>
@@ -139,34 +227,11 @@
         <div class="media-wrap loaded" style="aspect-ratio:4/3;"><img src="/Portfolio/508.jpg" alt="Volleyball" style="opacity:1;" class="loaded" /></div>
       </div>
     </div>
+
   </div>
-  <!-- COL 3 — CONTACT -->
-  
-  <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGynTQ__6g/-eN4WdT7DEBto8SSB6S_pg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
+
 </div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGynTQ__6g&#x2F;-eN4WdT7DEBto8SSB6S_pg&#x2F;view?utm_content=DAGynTQ__6g&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">CV_2025</a> par Enzo dc
-  
-  <div class="col-contact reveal">
-    <p class="contact-eyebrow">Get in touch</p>
-    <h2 class="contact-title">Let's work<br><em>together.</em></h2>
-    <p class="contact-status">→ Open to internship opportunities</p>
-    <div class="contact-info">
-      <div class="info-row"><div class="info-label">Email</div><a href="mailto:enzo.de.corte@gmail.com" class="info-value">enzo.de.corte@gmail.com</a></div>
-      <div class="info-row"><div class="info-label">Based in</div><div class="info-value">Paris — France</div></div>
-      <div class="info-row"><div class="info-label">Languages</div><div class="info-value">French (native) · English (professional)</div></div>
-    </div>
-    <div class="contact-divider">
-      <p class="contact-cta-label">Send a message</p>
-      <p class="contact-cta-desc">Have an internship opportunity, a project to discuss, or just want to say hi? Click below to send me an email directly — I'll get back to you as soon as possible.</p>
-      <a href="mailto:enzo.decorte@iim.fr?subject=Portfolio%20Contact&body=Hi%20Enzo%2C%0A%0A" class="btn-mail">Send an email <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
-    </div>
-  </div>
-</div>
+
 <footer>
   <p>© 2025 Enzo de Corte</p>
   <div class="footer-links">
@@ -176,6 +241,7 @@
     <a href="https://d3nz0k.itch.io" target="_blank" aria-label="Itch.io"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.105 2.41 2.435 2.41C22.78 8.43 24 7.283 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948 1 12.303 1 12 1c-.303 0-7.948 0-8.87.338zM8.5 9.5c-.46.46-1.08.75-1.74.75-.66 0-1.295-.29-1.755-.75C4.545 10.005 4 11.5 4 13v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-1.5-.545-2.995-1.005-3.5-.46.46-1.095.75-1.755.75-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75h-.024c-.66 0-1.28-.29-1.74-.75-.46.46-1.08.75-1.74.75-.66 0-1.28-.29-1.74-.75zm1 3h5c.55 0 1 .45 1 1v2.5c0 .55-.45 1-1 1h-5c-.55 0-1-.45-1-1V13.5c0-.55.45-1 1-1z"/></svg></a>
   </div>
 </footer>
+
 <button class="back-top" aria-label="Back to top">↑</button>
 <script src="main.js"></script>
 </body>
