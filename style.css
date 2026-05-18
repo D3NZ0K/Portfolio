@@ -394,12 +394,12 @@ footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
 .proj-breadcrumb a { color: var(--muted); transition: color 0.2s; }
 .proj-breadcrumb a:hover { color: var(--accent); }
 
-.proj-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.05; }
-.proj-tagline { color: var(--muted); margin-top: 14px; font-size: 0.95rem; max-width: 600px; line-height: 1.7; }
+.proj-title { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 600; line-height: 1.05; }
+.proj-tagline { color: var(--muted); margin-top: 14px; font-size: 1rem; max-width: 600px; line-height: 1.7; }
 
 .proj-meta-list { display: flex; flex-direction: column; gap: 16px; min-width: 180px; }
-.proj-meta-item label { display: block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.proj-meta-item span { font-size: 0.82rem; color: var(--text); }
+.proj-meta-item label { display: block; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.proj-meta-item span { font-size: 0.85rem; color: var(--text); }
 
 .proj-cta-link {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
