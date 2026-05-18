@@ -8,33 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="/Portfolio/PP_Onglet.png">
-  <style>
-    .art-page { padding: calc(var(--nav-h) + 60px) 40px 80px; max-width: 1200px; margin: 0 auto; }
-    .art-hero { margin-bottom: 72px; }
-    .art-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-    .art-title { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 600; line-height: 1.05; }
-    .art-sub { color: var(--muted); max-width: 500px; margin-top: 16px; font-size: 0.95rem; line-height: 1.7; }
-    .section-label { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .section-block { margin-bottom: 72px; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .gallery-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .gallery-item { position: relative; overflow: hidden; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 1; transition: transform 0.5s var(--ease-out); }
-    .gallery-item:hover img { transform: scale(1.04); }
-    .gallery-item figcaption { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 8px; text-align: center; }
-    .aspect-4-3 { aspect-ratio: 4/3; }
-    .aspect-16-9 { aspect-ratio: 16/9; }
-    .related-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 80px; position: relative; z-index: 1; }
-    .related-nav a { display: block; padding: 20px; border: 1px solid var(--border); text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s; }
-    .related-nav a:hover { color: var(--text); border-color: var(--accent); background: var(--accent-dim); }
-    .related-nav a.active { color: var(--accent); border-color: var(--accent); }
-    @media (max-width: 768px) {
-      .art-page { padding: calc(var(--nav-h) + 40px) 20px 60px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-2col { grid-template-columns: 1fr; }
-      .related-nav { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
 </head>
 <body>
 
