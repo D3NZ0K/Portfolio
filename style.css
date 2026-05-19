@@ -560,14 +560,14 @@ footer p { font-size: 0\.82rem; color: var(--muted); letter-spacing: 0.06em; }
 .acc-item.open .acc-chevron { border-color: var(--accent); transform: rotate(180deg); }
 
 .acc-content { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-.acc-item.open .acc-content { max-height: 2000px; }
+.acc-item.open .acc-content { max-height: 60vh; overflow-y: auto; }
 .acc-inner { padding: 32px 0 40px; border-top: 1px solid var(--border); }
 
 .acc-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 28px; }
 .acc-gallery-item { background: var(--surface); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.acc-gallery-item img, .acc-gallery-item video, .acc-gallery-item iframe { width: 100%; max-height: 280px; height: auto; object-fit: contain; display: block; }
+.acc-gallery-item img, .acc-gallery-item video, .acc-gallery-item iframe { width: 100%; max-height: 180px; height: auto; object-fit: contain; display: block; }
+.acc-gallery-item:first-child img, .acc-gallery-item:first-child video, .acc-gallery-item:first-child iframe { max-height: 220px; }
 .acc-gallery-item:first-child { grid-column: span 3; }
-.acc-gallery-item:first-child img, .acc-gallery-item:first-child video, .acc-gallery-item:first-child iframe { max-height: 360px; }
 
 .acc-body { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; }
 .acc-body-meta { display: flex; flex-direction: column; gap: 16px; min-width: 160px; }
