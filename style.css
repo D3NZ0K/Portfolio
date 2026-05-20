@@ -761,7 +761,7 @@ a.info-value:hover { color: var(--accent); }
   }
 
   #trap-gallery .labeled-item {
-    width: calc(25% - 15px);
+    flex: 0 0 calc(25% - 15px);
   }
 }
 
