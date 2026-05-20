@@ -758,8 +758,17 @@ a.info-value:hover { color: var(--accent); }
   .contact-right { padding: 40px 20px 60px; }
 }
 
+@media (min-width: 541px) {
+  #trap-gallery {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
 @media (max-width: 540px) {
-  .block-media-2col, .block-media-3col, .block-labeled-gallery { grid-template-columns: 1fr; }
+  #trap-gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
   nav { padding: 0 20px; }
   .nav-links {
     display: none;
