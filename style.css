@@ -566,7 +566,7 @@ footer p { font-size: 0\.82rem; color: var(--muted); letter-spacing: 0.06em; }
 .acc-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 16px; }
 .acc-gallery-item { background: var(--surface); overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .acc-gallery-item img, .acc-gallery-item video, .acc-gallery-item iframe { width: 100%; height: auto; object-fit: contain; display: block; max-height: 200px; }
-.acc-gallery-item:first-child { grid-column: span 3; aspect-ratio: 16/6; }
+.acc-gallery-item:first-child { grid-column: span 1; }
 
 .acc-body { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; }
 .acc-body-meta { display: flex; flex-direction: column; gap: 16px; min-width: 160px; }
