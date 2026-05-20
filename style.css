@@ -454,12 +454,6 @@ footer p { font-size: 0\.82rem; color: var(--muted); letter-spacing: 0.06em; }
 .related-info h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; }
 .related-info p { font-size: 0\.85rem; color: var(--muted); margin-top: 4px; }
 
-/* Masocat — Trap Gallery */
-#trap-gallery {
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 20px;
-}
-
 /* Love Knight — logos UI petits */
 .block-labeled-gallery.ui-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
 .block-labeled-gallery.ui-logos .labeled-item { width: calc(20% - 2px); }
@@ -760,7 +754,14 @@ a.info-value:hover { color: var(--accent); }
 
 @media (min-width: 541px) {
   #trap-gallery {
-    grid-template-columns: repeat(4, 1fr) !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #trap-gallery .labeled-item {
+    width: calc(25% - 15px);
   }
 }
 
