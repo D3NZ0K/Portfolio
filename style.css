@@ -759,9 +759,8 @@ a.info-value:hover { color: var(--accent); }
     justify-content: center;
     gap: 20px;
   }
-
   #trap-gallery .labeled-item {
-    flex: 0 0 calc(25% - 15px);
+    flex: 0 0 22%;
   }
 }
 
