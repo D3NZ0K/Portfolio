@@ -769,6 +769,18 @@ a.info-value:hover { color: var(--accent); }
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+@media (min-width: 541px) {
+  #cat-gallery {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  #cat-gallery .labeled-item {
+    flex: 0 0 30%;
+  }
+}
   nav { padding: 0 20px; }
   .nav-links {
     display: none;
