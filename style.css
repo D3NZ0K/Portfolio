@@ -778,7 +778,7 @@ a.info-value:hover { color: var(--accent); }
     gap: 20px;
   }
   #cat-gallery .labeled-item {
-    flex: 0 0 30%;
+    flex: 0 0 31%;
   }
 }
   nav { padding: 0 20px; }
