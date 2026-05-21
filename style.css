@@ -781,6 +781,7 @@ a.info-value:hover { color: var(--accent); }
     flex: 0 0 31%;
   }
 }
+ @media (max-width: 540px) {
   nav { padding: 0 20px; }
   .nav-links {
     display: none;
@@ -790,7 +791,7 @@ a.info-value:hover { color: var(--accent); }
     padding: 16px 20px;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 12px 0; font-size: 0\.95rem; }
+  .nav-links a { padding: 12px 0; font-size: 0.95rem; }
   .nav-burger { display: flex; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
 }
