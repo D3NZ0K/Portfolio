@@ -512,7 +512,9 @@ footer p { font-size: 0\.82rem; color: var(--muted); letter-spacing: 0.06em; }
 .aspect-16-9 { aspect-ratio: 16/9; }
 
 /* Related nav (art subpages) */
-.related-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-top: 80px; position: relative; z-index: 1; }
+.related-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 80px; position: relative; z-index: 1; border: 1px solid var(--border); }
+.related-nav a { border: none; border-right: 1px solid var(--border); }
+.related-nav a:last-child { border-right: none; }
 .related-nav a { display: block; padding: 20px; border: 1px solid var(--border); text-align: center; font-size: 0\.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s, border-color 0.2s, background 0.2s; }
 .related-nav a:hover { color: var(--text); border-color: var(--accent); background: var(--accent-dim); }
 .related-nav a.active { color: var(--accent); border-color: var(--accent); }
