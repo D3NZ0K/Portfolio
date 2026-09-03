@@ -768,6 +768,20 @@ a.info-value:hover { color: var(--accent); }
   gap: 12px;
   min-width: unset;
 }
+
+   /* Fix images qui débordent */
+.block-labeled-gallery .labeled-item .media-wrap img,
+.block-media-2col .media-wrap img,
+.block-media-3col .media-wrap img,
+.gallery-item img {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Fix block-side sur mobile */
+.block-side {
+  grid-template-columns: 1fr !important;
+}
    
 }
 
@@ -829,5 +843,10 @@ a.info-value:hover { color: var(--accent); }
 section[style*="height:calc(100vh"] {
   height: auto !important;
   min-height: 100vh;
+}
+
+/* Empêcher tout débordement */
+img, video, iframe {
+  max-width: 100% !important;
 }
 }
