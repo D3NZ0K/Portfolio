@@ -752,6 +752,23 @@ a.info-value:hover { color: var(--accent); }
   .contact-wrap { grid-template-columns: 1fr; }
   .contact-left { padding: 60px 20px 40px; border-right: none; border-bottom: 1px solid var(--border); }
   .contact-right { padding: 40px 20px 60px; }
+
+   /* Hero projets */
+[style*="grid-template-columns:1fr auto"] {
+  grid-template-columns: 1fr !important;
+}
+
+[style*="min-height:100vh"][style*="display:flex"] {
+  padding: 60px 20px 40px !important;
+}
+
+.proj-meta-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  min-width: unset;
+}
+   
 }
 
 @media (min-width: 541px) {
@@ -802,4 +819,15 @@ a.info-value:hover { color: var(--accent); }
   .card-tag { font-size: 0.7rem; }
   .card-title { font-size: 1.3rem; }
   .card-meta { font-size: 0.75rem; }
+
+    /* Fix images coupées */
+.block-labeled-gallery.ui-logos .labeled-item {
+  width: calc(33% - 4px) !important;
+}
+
+/* Fix hero vidéo */
+section[style*="height:calc(100vh"] {
+  height: auto !important;
+  min-height: 100vh;
+}
 }
