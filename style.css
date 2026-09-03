@@ -790,10 +790,16 @@ a.info-value:hover { color: var(--accent); }
     position: absolute; top: var(--nav-h); left: 0; right: 0;
     flex-direction: column; gap: 0;
     background: var(--bg); border-bottom: 1px solid var(--border);
-    padding: 16px 20px;
+    padding: 8px 0;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 12px 0; font-size: 0.95rem; }
+  .nav-links a { padding: 14px 20px; font-size: 1rem; border-bottom: 1px solid var(--border); }
+  .nav-links a::after { display: none; }
   .nav-burger { display: flex; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
+  .card-logos { display: none; }
+  .card-info { padding: 16px; padding-right: 16px; }
+  .card-tag { font-size: 0.7rem; }
+  .card-title { font-size: 1.3rem; }
+  .card-meta { font-size: 0.75rem; }
 }
